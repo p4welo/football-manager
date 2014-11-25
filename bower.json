@@ -1,0 +1,14 @@
+{
+  "name": "football-manager",
+  "version": "1.0.0",
+  "main": "index.html",
+  "dependencies": {
+    "EaselJS": "*",
+    "TweenJS": "*",
+    "socket.io": "~1.2.1",
+    "sockjs-client": "latest",
+    "stomp-websocket": "latest",
+    "jquery": "~2.1.1",
+    "highcharts": "~4.0.4"
+  }
+}
