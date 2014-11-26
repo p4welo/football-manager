@@ -11,10 +11,10 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <spring.version>4.0.0.RELEASE</spring.version>
     </properties>
 
     <modules>
-        <module>domain</module>
         <module>web</module>
     </modules>
 
@@ -59,11 +59,6 @@
         <dependencies>
             <dependency>
                 <groupId>pl.fm</groupId>
-                <artifactId>domain</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>pl.fm</groupId>
                 <artifactId>web</artifactId>
                 <version>${project.version}</version>
             </dependency>
@@ -83,18 +78,23 @@
             <dependency>
                 <groupId>org.springframework</groupId>
                 <artifactId>spring-webmvc</artifactId>
-                <version>4.0.0.RELEASE</version>
+                <version>${spring.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-context</artifactId>
+                <version>${spring.version}</version>
             </dependency>
             <!-- Spring WebSocket dependencies -->
             <dependency>
                 <groupId>org.springframework</groupId>
                 <artifactId>spring-websocket</artifactId>
-                <version>4.0.0.RELEASE</version>
+                <version>${spring.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.springframework</groupId>
                 <artifactId>spring-messaging</artifactId>
-                <version>4.0.0.RELEASE</version>
+                <version>${spring.version}</version>
             </dependency>
             <!-- Spring security dependencies -->
             <dependency>

@@ -1,4 +1,4 @@
-package pl.fm.domain;
+package pl.fm.web.model;
 
 /**
  * Created by parado on 2014-11-25.

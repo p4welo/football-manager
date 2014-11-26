@@ -1,10 +1,11 @@
-package pl.fm.domain;
+package pl.fm.web.model;
 
 /**
  * Created by parado on 2014-11-25.
  */
 public abstract class MovingEntity {
 
+    private int id;
     private int x;
     private int y;
 
@@ -23,4 +24,5 @@ public abstract class MovingEntity {
     public void setY(int y) {
         this.y = y;
     }
+
 }
