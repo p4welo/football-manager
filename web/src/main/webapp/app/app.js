@@ -1,9 +1,8 @@
 var stage, balls;
 
 function init() {
-    stage = new createjs.Stage("myCanvas");
+    stage = new createjs.Stage("pitchArea");
     balls = [];
-
     createjs.Ticker.addEventListener("tick", tick);
 }
 
@@ -31,5 +30,4 @@ function onInitialized(message) {
         balls.push(ball);
         stage.addChild(ball);
     }
-
 }

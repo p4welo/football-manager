@@ -19,28 +19,28 @@ public class RandomDataGenerator implements ApplicationListener<BrokerAvailabili
     public void onApplicationEvent(final BrokerAvailabilityEvent event) {
     }
 
-//    @Scheduled(fixedDelay = 2000, initialDelay = 500)
-//    public void sendDataUpdates0() {
-//        messagingTemplate.convertAndSend("/data/0", new Move(new Random().nextInt(500), new Random().nextInt(500), 5000));
-//    }
-//
-//    @Scheduled(fixedDelay = 2000, initialDelay = 100)
-//    public void sendDataUpdates1() {
-//        messagingTemplate.convertAndSend("/data/1", new Move(new Random().nextInt(500), new Random().nextInt(500), 5000));
-//    }
-//
-//    @Scheduled(fixedDelay = 2000, initialDelay = 300)
-//    public void sendDataUpdates2() {
-//        messagingTemplate.convertAndSend("/data/2", new Move(new Random().nextInt(500), new Random().nextInt(500), 5000));
-//    }
-//
-//    @Scheduled(fixedDelay = 2000, initialDelay = 800)
-//    public void sendDataUpdates3() {
-//        messagingTemplate.convertAndSend("/data/3", new Move(new Random().nextInt(500), new Random().nextInt(500), 5000));
-//    }
-//
-//    @Scheduled(fixedDelay = 2000, initialDelay = 500)
-//    public void sendDataUpdates4() {
-//        messagingTemplate.convertAndSend("/data/4", new Move(new Random().nextInt(500), new Random().nextInt(500), 5000));
-//    }
+    @Scheduled(fixedDelay = 2000, initialDelay = 500)
+    public void sendDataUpdates0() {
+        messagingTemplate.convertAndSend("/data/0", new Move(new Random().nextInt(500), new Random().nextInt(500), 5000));
+    }
+
+    @Scheduled(fixedDelay = 2000, initialDelay = 100)
+    public void sendDataUpdates1() {
+        messagingTemplate.convertAndSend("/data/1", new Move(new Random().nextInt(500), new Random().nextInt(500), 5000));
+    }
+
+    @Scheduled(fixedDelay = 2000, initialDelay = 300)
+    public void sendDataUpdates2() {
+        messagingTemplate.convertAndSend("/data/2", new Move(new Random().nextInt(500), new Random().nextInt(500), 5000));
+    }
+
+    @Scheduled(fixedDelay = 2000, initialDelay = 800)
+    public void sendDataUpdates3() {
+        messagingTemplate.convertAndSend("/data/3", new Move(new Random().nextInt(500), new Random().nextInt(500), 5000));
+    }
+
+    @Scheduled(fixedDelay = 2000, initialDelay = 500)
+    public void sendDataUpdates4() {
+        messagingTemplate.convertAndSend("/data/4", new Move(new Random().nextInt(500), new Random().nextInt(500), 5000));
+    }
 }
