@@ -1,13 +1,20 @@
-package pl.fm.web.model;
+package pl.fm.web.model.utils;
 
 /**
- * Created by parado on 2014-11-25.
+ * Created by parado on 2014-11-27.
  */
-public abstract class MovingEntity {
+public class Vector2D {
 
-    private int id;
     private int x;
     private int y;
+
+    public Vector2D() {
+    }
+
+    public Vector2D(int x, int y) {
+        this.x = x;
+        this.y = y;
+    }
 
     public int getX() {
         return x;
@@ -24,5 +31,4 @@ public abstract class MovingEntity {
     public void setY(int y) {
         this.y = y;
     }
-
 }

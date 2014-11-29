@@ -1,12 +1,19 @@
 package pl.fm.web.model;
 
+import pl.fm.web.model.utils.Region;
+
 /**
  * Created by parado on 2014-11-25.
  */
-public class Pitch {
+public class Pitch implements Entity {
 
-    private int width = 800;
-    private int height = 500;
+    public static final int X_REGIONS_COUNT = 6;
+    public static final int Y_REGIONS_COUNT = 3;
+
+    public static final int PITCH_WIDTH = 900;
+    public static final int PITCH_HEIGHT = 450;
+
+    private Region region;
 
     private Team hostTeam;
     private Team guestTeam;
@@ -14,20 +21,12 @@ public class Pitch {
     private Goal hostGoal;
     private Goal guestGoal;
 
-    public int getWidth() {
-        return width;
+    public Pitch() {
+        region = new Region(PITCH_WIDTH / X_REGIONS_COUNT, PITCH_HEIGHT / Y_REGIONS_COUNT);
     }
 
-    public void setWidth(int width) {
-        this.width = width;
-    }
-
-    public int getHeight() {
-        return height;
-    }
-
-    public void setHeight(int height) {
-        this.height = height;
+    public void setRegion(Region region) {
+        this.region = region;
     }
 
     public Team getHostTeam() {
