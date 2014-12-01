@@ -1,5 +1,6 @@
 package pl.fm.web.model;
 
+import pl.fm.web.model.enums.TeamStateEnum;
 import pl.fm.web.service.impl.FieldPlayerServiceImpl;
 
 import java.util.ArrayList;
@@ -10,17 +11,21 @@ import java.util.List;
  */
 public class Team implements Entity {
 
-    private String name;
-    private GoalKeeper goalKeeper;
-    private List<FieldPlayer> players;
+    protected String name;
+    protected String color;
+    protected GoalKeeper goalKeeper;
+    protected List<FieldPlayer> players;
 
-    private FieldPlayerServiceImpl controllingPlayer;
-    private FieldPlayerServiceImpl supportingPlayer;
-    private FieldPlayerServiceImpl receivingPlayer;
-    private FieldPlayerServiceImpl closestToBallPlayer;
+    protected FieldPlayerServiceImpl controllingPlayer;
+    protected FieldPlayerServiceImpl supportingPlayer;
+    protected FieldPlayerServiceImpl receivingPlayer;
+    protected FieldPlayerServiceImpl closestToBallPlayer;
 
-    public Team(String name) {
+    protected TeamStateEnum state;
+
+    public Team(String name, String color) {
         this.name = name;
+        this.color = color;
         players = new ArrayList<>();
     }
 
@@ -78,5 +83,21 @@ public class Team implements Entity {
 
     public void setClosestToBallPlayer(FieldPlayerServiceImpl closestToBallPlayer) {
         this.closestToBallPlayer = closestToBallPlayer;
+    }
+
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
+
+    public TeamStateEnum getState() {
+        return state;
+    }
+
+    public void setState(TeamStateEnum state) {
+        this.state = state;
     }
 }

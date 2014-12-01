@@ -1,13 +1,19 @@
 package pl.fm.web.model;
 
+import pl.fm.web.utils.SidUtils;
+
 /**
  * Created by parado on 2014-11-25.
  */
 public abstract class MovingObject implements Entity {
 
-    private int id;
-    private int x;
-    private int y;
+    protected MovingObject() {
+        this.id = SidUtils.generate();
+    }
+
+    protected String id;
+    protected int x = 0;
+    protected int y = 0;
 
     public int getX() {
         return x;
@@ -25,4 +31,11 @@ public abstract class MovingObject implements Entity {
         this.y = y;
     }
 
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 }

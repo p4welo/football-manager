@@ -20,9 +20,9 @@ public class RandomDataGenerator implements ApplicationListener<BrokerAvailabili
     }
 
 //    @Scheduled(fixedDelay = 2000, initialDelay = 500)
-    public void sendDataUpdates0() {
-        messagingTemplate.convertAndSend("/data/0", new Move(new Random().nextInt(500), new Random().nextInt(500), 5000));
-    }
+//    public void sendDataUpdates0() {
+//        messagingTemplate.convertAndSend("/data/0", new Move(new Random().nextInt(500), new Random().nextInt(500), 5000));
+//    }
 //
 //    @Scheduled(fixedDelay = 2000, initialDelay = 100)
 //    public void sendDataUpdates1() {

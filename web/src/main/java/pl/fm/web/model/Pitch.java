@@ -1,6 +1,8 @@
 package pl.fm.web.model;
 
+import pl.fm.web.model.enums.PitchStateEnum;
 import pl.fm.web.model.utils.Region;
+import pl.fm.web.model.utils.Vector2D;
 
 /**
  * Created by parado on 2014-11-25.
@@ -13,16 +15,36 @@ public class Pitch implements Entity {
     public static final int PITCH_WIDTH = 900;
     public static final int PITCH_HEIGHT = 450;
 
-    private Region region;
+    protected Region region;
 
-    private Team hostTeam;
-    private Team guestTeam;
-    private Ball ball;
-    private Goal hostGoal;
-    private Goal guestGoal;
+    protected Team hostTeam;
+    protected Team guestTeam;
+    protected Ball ball;
+    protected Goal hostGoal;
+    protected Goal guestGoal;
+
+    protected PitchStateEnum state = PitchStateEnum.WAITING;
+
+    public PitchStateEnum getState() {
+        return state;
+    }
+
+    public void setState(PitchStateEnum state) {
+        this.state = state;
+    }
 
     public Pitch() {
         region = new Region(PITCH_WIDTH / X_REGIONS_COUNT, PITCH_HEIGHT / Y_REGIONS_COUNT);
+    }
+
+    public static Vector2D getCoordinatesByPosition(int position) {
+        int regionWidth = PITCH_WIDTH / X_REGIONS_COUNT;
+        int regionHeight = PITCH_HEIGHT / Y_REGIONS_COUNT;
+
+        int x = (position % X_REGIONS_COUNT) * regionWidth + regionWidth / 2;
+        int y = (position / X_REGIONS_COUNT) * regionHeight + regionHeight / 2;
+
+        return new Vector2D(x, y);
     }
 
     public void setRegion(Region region) {

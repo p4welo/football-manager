@@ -5,7 +5,7 @@ package pl.fm.web.model;
  */
 public class Goal implements Entity {
 
-    private int goalsScored = 0;
+    protected int goalsScored = 0;
 
     public int getGoalsScored() {
         return goalsScored;

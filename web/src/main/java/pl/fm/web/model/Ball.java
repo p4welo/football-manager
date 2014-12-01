@@ -5,7 +5,7 @@ package pl.fm.web.model;
  */
 public class Ball extends MovingObject {
 
-    private AbstractPlayer owner;
+    protected AbstractPlayer owner;
 
     public AbstractPlayer getOwner() {
         return owner;
