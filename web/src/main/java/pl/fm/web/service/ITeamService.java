@@ -7,4 +7,6 @@ import pl.fm.web.model.Team;
  */
 public interface ITeamService {
     void wait(Team team);
+
+    void think(Team team);
 }

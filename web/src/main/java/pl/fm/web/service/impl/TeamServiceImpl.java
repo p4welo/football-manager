@@ -1,5 +1,6 @@
 package pl.fm.web.service.impl;
 
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 import pl.fm.web.model.Team;
 import pl.fm.web.model.enums.TeamStateEnum;
@@ -16,5 +17,11 @@ public class TeamServiceImpl extends BusinessObjectServiceImpl<Team> implements 
     @Override
     public void wait(Team team) {
         team.setState(TeamStateEnum.WAITING);
+    }
+
+    @Override
+    @Async
+    public void think(Team team) {
+
     }
 }

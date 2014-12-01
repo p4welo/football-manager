@@ -1,5 +1,6 @@
 package pl.fm.web.service.impl;
 
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 import pl.fm.web.model.FieldPlayer;
 import pl.fm.web.model.MovingObject;
@@ -21,4 +22,9 @@ public class FieldPlayerServiceImpl extends AbstractPlayerServiceImpl<FieldPlaye
     @Resource
     private IBehaviorSocket behaviorSocket;
 
+    @Override
+    @Async
+    public void think(FieldPlayer player) {
+
+    }
 }

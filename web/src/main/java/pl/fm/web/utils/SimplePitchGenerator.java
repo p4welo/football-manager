@@ -19,7 +19,7 @@ public class SimplePitchGenerator {
         Goal guestGoal = new Goal();
         Goal hostGoal = new Goal();
 
-        Team guestTeam = new Team("FC Wymiatacze", "blue");
+        Team guestTeam = new Team("FC Wymiatacze", "red");
         Team hostTeam = new Team("KS Kurnik", "yellow");
 
         pitch.setGuestGoal(guestGoal);

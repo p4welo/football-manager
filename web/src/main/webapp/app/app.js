@@ -2,10 +2,17 @@ angular.module("fm", [])
 
     .controller("indexController", function ($scope) {
 
+        var PLAYER_TEXT_X = -4;
+        var PLAYER_TEXT_Y = -6;
+        var PLAYER_TEXT_FONT = "bold 14px Arial";
+
+
         var stage, players = {}, ball;
 
         function init() {
             stage = new createjs.Stage("pitchArea");
+            createjs.Ticker.setInterval(25);
+            createjs.Ticker.setFPS(50);
             createjs.Ticker.addEventListener("tick", tick);
         }
 
@@ -19,12 +26,14 @@ angular.module("fm", [])
 
         function onConnect() {
             client.subscribe("/fmInitialized", onInitialized);
-            client.subscribe("/fmMove", onMove);
+            client.subscribe("/fmMove", function (message) {
+                onMove(JSON.parse(message.body));
+            });
             client.send("/fmInit", {}, {});
         };
 
-        function onMove(message) {
-
+        function onMove(body) {
+            console.table(body);
         }
 
         function insertPlayers(playerList, color) {
@@ -34,13 +43,33 @@ angular.module("fm", [])
         }
 
         function drawPlayer(p, color) {
+            var container = new createjs.Container();
             var playerBall = new createjs.Shape();
             playerBall.graphics.beginFill(color).drawCircle(0, 0, 10);
-            console.json("INSERT PLAYER: " + p);
-            playerBall.x = p.x;
-            playerBall.y = p.y;
-            players[p.id] = playerBall;
-            stage.addChild(playerBall);
+            container.x = p.x;
+            container.y = p.y;
+            var txtColor;
+            if (color == "yellow") {
+                txtColor = "black";
+            }
+            else {
+                txtColor = "white";
+            }
+            var text = new createjs.Text(p.number, PLAYER_TEXT_FONT, txtColor);
+            text.x = PLAYER_TEXT_X;
+            text.y = PLAYER_TEXT_Y;
+            container.addChild(playerBall);
+            container.addChild(text);
+            stage.addChild(container);
+            players[p.id] = container;
+        }
+
+        function drawBall(b) {
+            ball = new createjs.Shape();
+            ball.graphics.beginFill("white").drawCircle(0, 0, 4);
+            ball.x = 450;
+            ball.y = 225;
+            stage.addChild(ball);
         }
 
         function onInitialized(message) {
@@ -52,13 +81,14 @@ angular.module("fm", [])
             insertPlayers(pitch.hostTeam.players, pitch.hostTeam.color);
             drawPlayer(pitch.hostTeam.goalKeeper, pitch.hostTeam.color);
 
-            console.table(players);
+            drawBall(pitch.ball);
         }
 
         $scope.init = init();
 
-        $scope.dupa = function () {
-            createjs.Tween.get(players[0]).to({y: 0}, 500, createjs.Ease.getPowOut(3));
+        $scope.randomize = function () {
+            for (var i in players) {
+                createjs.Tween.get(players[i], {override:true}).to({y: Math.floor(Math.random() * 450), x: Math.floor(Math.random() * 900)}, 2000, createjs.Ease.getPowOut(3));
+            }
         }
-
     })

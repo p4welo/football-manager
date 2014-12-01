@@ -1,5 +1,6 @@
 package pl.fm.web.service.impl;
 
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 import pl.fm.web.model.GoalKeeper;
 import pl.fm.web.service.IGoalKeeperService;
@@ -14,4 +15,9 @@ public class GoalKeeperServiceImpl extends AbstractPlayerServiceImpl<GoalKeeper>
     public static final String BEAN_NAME = "goalKeeperService";
 
 
+    @Override
+    @Async
+    public void think(GoalKeeper goalKeeper) {
+
+    }
 }

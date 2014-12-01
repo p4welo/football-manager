@@ -14,7 +14,7 @@ public class FieldPlayer extends AbstractPlayer {
         this.y = y;
     }
 
-    protected PlayerStateEnum state;
+    protected PlayerStateEnum state = PlayerStateEnum.WAITING;
 
     public FieldPlayer(int number) {
         this.number = number;
