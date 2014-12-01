@@ -9,11 +9,48 @@ angular.module("fm", [])
 
         var stage, players = {}, ball;
 
+        function drawPitchLine(fromX, fromY, toX, toY) {
+            var PITCH_LINE_COLOR = "white";
+            var PITCH_LINE_WIDTH = 3;
+
+            var line = new createjs.Shape();
+            line.graphics.setStrokeStyle(PITCH_LINE_WIDTH);
+            line.graphics.beginStroke(PITCH_LINE_COLOR);
+            line.graphics.moveTo(fromX, fromY);
+            line.graphics.lineTo(toX, toY);
+            line.graphics.endStroke();
+            stage.addChild(line);
+        }
+
+        function drawPitch() {
+
+//            PITCH BORDERS
+            drawPitchLine(5, 5, 895, 5);
+            drawPitchLine(5, 5, 5, 445);
+            drawPitchLine(5, 445, 895, 445);
+            drawPitchLine(895, 5, 895, 445);
+
+//            MIDDLE LINE
+            drawPitchLine(450, 5, 450, 445);
+
+//            LEFT GOAL
+            drawPitchLine(5, 150, 75, 150);
+            drawPitchLine(75, 150, 75, 300);
+            drawPitchLine(5, 300, 75, 300);
+
+//            RIGHT GOAL
+            drawPitchLine(825, 150, 895, 150);
+            drawPitchLine(825, 150, 825, 300);
+            drawPitchLine(825, 300, 895, 300);
+        }
+
         function init() {
             stage = new createjs.Stage("pitchArea");
             createjs.Ticker.setInterval(25);
             createjs.Ticker.setFPS(50);
             createjs.Ticker.addEventListener("tick", tick);
+
+            drawPitch();
         }
 
         function tick() {
@@ -88,7 +125,7 @@ angular.module("fm", [])
 
         $scope.randomize = function () {
             for (var i in players) {
-                createjs.Tween.get(players[i], {override:true}).to({y: Math.floor(Math.random() * 450), x: Math.floor(Math.random() * 900)}, 2000, createjs.Ease.getPowOut(3));
+                createjs.Tween.get(players[i], {override: true}).to({y: Math.floor(Math.random() * 430) + 10, x: Math.floor(Math.random() * 880) + 10}, 2000, createjs.Ease.getPowOut(3));
             }
         }
     })
