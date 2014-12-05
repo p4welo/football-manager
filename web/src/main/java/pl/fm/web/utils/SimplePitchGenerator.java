@@ -35,8 +35,8 @@ public class SimplePitchGenerator {
         List<FieldPlayer> hostPlayers = new ArrayList<>();
 
         for (int i = 0; i < 4; i++) {
-            guestPlayers.add(new FieldPlayer(i + 2, x * i, y));
-            hostPlayers.add(new FieldPlayer(i + 2, x * i, y));
+            guestPlayers.add(new FieldPlayer(i + 2, x, y));
+            hostPlayers.add(new FieldPlayer(i + 2, x, y));
         }
 
         hostTeam.setPlayers(hostPlayers);

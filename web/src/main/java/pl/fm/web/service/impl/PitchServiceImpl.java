@@ -29,27 +29,30 @@ public class PitchServiceImpl extends BusinessObjectServiceImpl<Pitch> implement
         Team guestTeam = pitch.getGuestTeam();
         Team hostTeam = pitch.getHostTeam();
 
-        switch (pitch.getState()) {
-            case WAITING:
+//        switch (pitch.getState()) {
+//            case WAITING:
+//
+//                if (guestTeam.getState() != TeamStateEnum.WAITING) {
+//                    teamService.wait(guestTeam);
+//                }
+//                if (hostTeam.getState() != TeamStateEnum.WAITING) {
+//                    teamService.wait(hostTeam);
+//                }
+//
+//                break;
+//
+//            case INTRODUCING_PLAYERS:
+//
+//
+//                break;
+//
+//            case MATCH:
+//
+//
+//                break;
+//        }
 
-                if (guestTeam.getState() != TeamStateEnum.WAITING) {
-                    teamService.wait(guestTeam);
-                }
-                if (hostTeam.getState() != TeamStateEnum.WAITING) {
-                    teamService.wait(hostTeam);
-                }
-
-                break;
-
-            case INTRODUCING_PLAYERS:
-
-
-                break;
-
-            case MATCH:
-
-
-                break;
-        }
+        teamService.think(guestTeam);
+        teamService.think(hostTeam);
     }
 }

@@ -69,8 +69,26 @@ angular.module("fm", [])
             client.send("/fmInit", {}, {});
         };
 
+        function calculateShift(object, x, y) {
+            var dx = object.x - x;
+            var dy = object.y - y;
+            return Math.floor(Math.sqrt(dx * dx + dy * dy));
+        }
+
+        function moveObject(object, x, y, time) {
+            createjs.Tween.get(object, {override: true}).to({y: y, x: x}, time);
+        }
+
         function onMove(body) {
-            console.table(body);
+            var x = body.x;
+            var y = body.y;
+            var v = body.v;
+            var id = body.id;
+            var player = players[id];
+            var ds = calculateShift(player, x, y);
+            var time = ds * 1000 / v;
+
+            moveObject(player, x, y, time);
         }
 
         function insertPlayers(playerList, color) {
@@ -119,9 +137,11 @@ angular.module("fm", [])
             drawPlayer(pitch.hostTeam.goalKeeper, pitch.hostTeam.color);
 
             drawBall(pitch.ball);
+            $scope.loading = false;
         }
 
         $scope.init = init();
+        $scope.loading = true;
 
         $scope.randomize = function () {
             for (var i in players) {

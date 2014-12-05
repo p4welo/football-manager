@@ -5,5 +5,6 @@ package pl.fm.web.model.enums;
  */
 public enum PlayerStateEnum {
     WAITING,
+    IN_MOVE,
     BACK_TO_POSITION
 }

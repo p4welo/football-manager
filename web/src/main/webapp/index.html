@@ -10,7 +10,11 @@
 </head>
 <body ng-controller="indexController" ng-init="init()">
 <div class="text-center">
-    <div class="row">
+    <div class="row text-center" ng-if="false">
+        <i class="fa fa-spin fa-spinner"></i>
+        <span>Wczytywanie boiska...</span>
+    </div>
+    <div class="row" ng-show="true">
         <canvas id="pitchArea" width="900" height="450"></canvas>
     </div>
     <button ng-click="randomize()">Random!</button>

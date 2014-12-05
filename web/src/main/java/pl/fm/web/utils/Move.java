@@ -4,22 +4,23 @@ package pl.fm.web.utils;
  * Created by parado on 2014-11-25.
  */
 public class Move {
-    int id;
+    String id;
     int x;
     int y;
     int v;
 
-    public Move(int x, int y, int v) {
+    public Move(String id, int x, int y, int v) {
+        this.id = id;
         this.x = x;
         this.y = y;
         this.v = v;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
