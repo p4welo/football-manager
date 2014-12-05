@@ -59,4 +59,5 @@ public class MatchPerformer {
     public Pitch getPitch() {
         return pitch;
     }
+
 }

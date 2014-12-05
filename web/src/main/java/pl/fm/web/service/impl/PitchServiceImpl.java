@@ -4,8 +4,7 @@ import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 import pl.fm.web.model.Pitch;
 import pl.fm.web.model.Team;
-import pl.fm.web.model.enums.TeamStateEnum;
-import pl.fm.web.model.utils.Vector2D;
+import pl.fm.web.model.enums.PitchStateEnum;
 import pl.fm.web.service.IPitchService;
 import pl.fm.web.service.ITeamService;
 
@@ -51,8 +50,15 @@ public class PitchServiceImpl extends BusinessObjectServiceImpl<Pitch> implement
 //
 //                break;
 //        }
+        if (pitch.getState() == PitchStateEnum.MATCH) {
+            teamService.think(guestTeam);
+            teamService.think(hostTeam);
+        }
+    }
 
-        teamService.think(guestTeam);
-        teamService.think(hostTeam);
+    @Override
+    @Async
+    public void start(Pitch pitch) {
+        pitch.setState(PitchStateEnum.MATCH);
     }
 }

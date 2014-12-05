@@ -149,6 +149,9 @@ angular.module("fm", ['ngResource'])
         }
 
         $scope.init = init();
+        $scope.start = function () {
+            broadcastFactory.start();
+        };
         $scope.loading = true;
 
         $scope.randomize = function () {
@@ -162,6 +165,10 @@ angular.module("fm", ['ngResource'])
         return $resource(null, null, {
             moveCompleted: {
                 url: "rest/player/:id/move/complete",
+                method: 'GET'
+            },
+            start: {
+                url: "rest/start",
                 method: 'GET'
             }
         });

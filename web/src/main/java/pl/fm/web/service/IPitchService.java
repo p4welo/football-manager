@@ -7,4 +7,6 @@ import pl.fm.web.model.Pitch;
  */
 public interface IPitchService {
     void think(Pitch pitch);
+
+    void start(Pitch pitch);
 }

@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import pl.fm.web.model.Pitch;
+import pl.fm.web.service.IPitchService;
 import pl.fm.web.thread.MatchPerformer;
 
 import javax.annotation.Resource;
@@ -22,6 +23,9 @@ public class BroadcastController {
     @Resource
     private MatchPerformer matchPerformer;
 
+    @Resource
+    private IPitchService pitchService;
+
     @MessageMapping("/fmInit")
     @SendTo("/fmInitialized")
     public Pitch initialize() {
@@ -32,5 +36,11 @@ public class BroadcastController {
     @ResponseStatus(value = HttpStatus.OK)
     public void onMoveComplete(@PathVariable("id") String id) {
         matchPerformer.completeMove(id);
+    }
+
+    @RequestMapping(value = "start", method = RequestMethod.GET)
+    @ResponseStatus(value = HttpStatus.OK)
+    public void startSimulation() {
+        pitchService.start(matchPerformer.getPitch());
     }
 }
