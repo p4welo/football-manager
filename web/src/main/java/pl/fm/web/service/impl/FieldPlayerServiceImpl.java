@@ -31,4 +31,10 @@ public class FieldPlayerServiceImpl extends AbstractPlayerServiceImpl<FieldPlaye
             behaviorSocket.move(player, (new Random()).nextInt(880) + 10, (new Random()).nextInt(430) + 10);
 //        }
     }
+
+    @Override
+    @Async
+    public void wait(FieldPlayer player) {
+        player.setState(PlayerStateEnum.WAITING);
+    }
 }

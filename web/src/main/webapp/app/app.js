@@ -1,6 +1,6 @@
-angular.module("fm", [])
+angular.module("fm", ['ngResource'])
 
-    .controller("indexController", function ($scope) {
+    .controller("indexController", function ($scope, broadcastFactory) {
 
         var PLAYER_TEXT_X = -4;
         var PLAYER_TEXT_Y = -6;
@@ -75,8 +75,15 @@ angular.module("fm", [])
             return Math.floor(Math.sqrt(dx * dx + dy * dy));
         }
 
-        function moveObject(object, x, y, time) {
-            createjs.Tween.get(object, {override: true}).to({y: y, x: x}, time);
+        function moveObject(object, x, y, time, callback) {
+            createjs.Tween.get(object, {override: true}).to({y: y, x: x}, time).call(callback());
+        }
+
+        function onMoveCompleted(object) {
+//            client.send("/player/move/complete", {}, JSON.stringify({
+//                'id' : object.id
+//            }));
+            broadcastFactory.moveCompleted({id: object.id});
         }
 
         function onMove(body) {
@@ -88,7 +95,7 @@ angular.module("fm", [])
             var ds = calculateShift(player, x, y);
             var time = ds * 1000 / v;
 
-            moveObject(player, x, y, time);
+            moveObject(player, x, y, time, onMoveCompleted(player));
         }
 
         function insertPlayers(playerList, color) {
@@ -138,6 +145,7 @@ angular.module("fm", [])
 
             drawBall(pitch.ball);
             $scope.loading = false;
+            $scope.$apply();
         }
 
         $scope.init = init();
@@ -148,4 +156,13 @@ angular.module("fm", [])
                 createjs.Tween.get(players[i], {override: true}).to({y: Math.floor(Math.random() * 430) + 10, x: Math.floor(Math.random() * 880) + 10}, 2000, createjs.Ease.getPowOut(3));
             }
         }
+    })
+
+    .factory("broadcastFactory", function ($resource) {
+        return $resource(null, null, {
+            moveCompleted: {
+                url: "rest/player/:id/move/complete",
+                method: 'GET'
+            }
+        });
     })

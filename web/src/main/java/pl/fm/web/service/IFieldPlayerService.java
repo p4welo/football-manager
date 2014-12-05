@@ -8,4 +8,6 @@ import pl.fm.web.model.FieldPlayer;
 public interface IFieldPlayerService {
 
     void think(FieldPlayer player);
+
+    void wait(FieldPlayer player);
 }
