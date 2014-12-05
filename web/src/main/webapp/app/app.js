@@ -79,11 +79,11 @@ angular.module("fm", ['ngResource'])
             createjs.Tween.get(object, {override: true}).to({y: y, x: x}, time).call(callback());
         }
 
-        function onMoveCompleted(object) {
+        function onMoveCompleted(objectId) {
 //            client.send("/player/move/complete", {}, JSON.stringify({
 //                'id' : object.id
 //            }));
-            broadcastFactory.moveCompleted({id: object.id});
+            broadcastFactory.moveCompleted({id: objectId});
         }
 
         function onMove(body) {
@@ -95,7 +95,7 @@ angular.module("fm", ['ngResource'])
             var ds = calculateShift(player, x, y);
             var time = ds * 1000 / v;
 
-            moveObject(player, x, y, time, onMoveCompleted(player));
+            moveObject(player, x, y, time, onMoveCompleted(id));
         }
 
         function insertPlayers(playerList, color) {
