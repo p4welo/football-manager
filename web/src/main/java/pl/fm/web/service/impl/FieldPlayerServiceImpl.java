@@ -25,11 +25,11 @@ public class FieldPlayerServiceImpl extends AbstractPlayerServiceImpl<FieldPlaye
     @Override
     @Async
     public void think(FieldPlayer player) {
-//        if (player.getState() != PlayerStateEnum.IN_MOVE) {
+        if (player.getState() != PlayerStateEnum.IN_MOVE) {
             player.setState(PlayerStateEnum.IN_MOVE);
 
             behaviorSocket.move(player, (new Random()).nextInt(880) + 10, (new Random()).nextInt(430) + 10);
-//        }
+        }
     }
 
     @Override
