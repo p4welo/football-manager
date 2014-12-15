@@ -22,8 +22,8 @@ public class BehaviorSocketImpl implements IBehaviorSocket, ApplicationListener<
     private MessageSendingOperations<String> messagingTemplate;
 
     @Override
-    public void move(FieldPlayer player, int x, int y) {
-        messagingTemplate.convertAndSend("/fmMove", new Move(player.getId(), x, y, 50));
+    public void move(FieldPlayer player) {
+        messagingTemplate.convertAndSend("/fmMove", new Move(player.getId(), player.getFutureX(), player.getFutureY(), player.getVelocity()));
     }
 
     @Override

@@ -9,4 +9,8 @@ public interface IPitchService {
     void think(Pitch pitch);
 
     void start(Pitch pitch);
+
+    void save(Pitch pitch);
+
+    Pitch getPitch();
 }

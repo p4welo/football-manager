@@ -6,6 +6,8 @@ import pl.fm.web.model.enums.PlayerStateEnum;
  * Created by parado on 2014-11-25.
  */
 public class FieldPlayer extends AbstractPlayer {
+    public FieldPlayer() {
+    }
 
     public FieldPlayer(int number, int x, int y) {
         super();

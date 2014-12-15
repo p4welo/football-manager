@@ -31,11 +31,7 @@ public class TeamServiceImpl extends BusinessObjectServiceImpl<Team> implements 
     @Override
     @Async
     public void think(Team team) {
-        GoalKeeper goalKeeper = team.getGoalKeeper();
-        List<FieldPlayer> playerList = team.getPlayers();
 
-        for (FieldPlayer player : playerList) {
-            fieldPlayerService.think(player);
-        }
+        team.getPlayers().forEach(fieldPlayerService::think);
     }
 }

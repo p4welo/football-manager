@@ -1,6 +1,6 @@
 angular.module("fm", ['ngResource'])
 
-    .controller("indexController", function ($scope, broadcastFactory) {
+    .controller("indexController", function ($scope, broadcastFactory, moveService) {
 
         var PLAYER_TEXT_X = -4;
         var PLAYER_TEXT_Y = -6;
@@ -66,24 +66,11 @@ angular.module("fm", ['ngResource'])
             client.subscribe("/fmMove", function (message) {
                 onMove(JSON.parse(message.body));
             });
-            client.send("/fmInit", {}, {});
+            client.send("/init", {}, {});
         };
 
-        function calculateShift(object, x, y) {
-            var dx = object.x - x;
-            var dy = object.y - y;
-            return Math.floor(Math.sqrt(dx * dx + dy * dy));
-        }
-
-        function moveObject(object, x, y, time, callback) {
-            createjs.Tween.get(object, {override: true}).to({y: y, x: x}, time).call(callback());
-        }
-
-        function onMoveCompleted(objectId) {
-//            client.send("/player/move/complete", {}, JSON.stringify({
-//                'id' : object.id
-//            }));
-            broadcastFactory.moveCompleted({id: objectId});
+        function moveObject(object, x, y, time) {
+            createjs.Tween.get(object, {override: true}).to({y: y, x: x}, time);
         }
 
         function onMove(body) {
@@ -92,10 +79,10 @@ angular.module("fm", ['ngResource'])
             var v = body.v;
             var id = body.id;
             var player = players[id];
-            var ds = calculateShift(player, x, y);
+            var ds = moveService.calculateShift(player, x, y);
             var time = ds * 1000 / v;
 
-            moveObject(player, x, y, time, onMoveCompleted(id));
+            moveObject(player, x, y, time);
         }
 
         function insertPlayers(playerList, color) {
@@ -163,13 +150,23 @@ angular.module("fm", ['ngResource'])
 
     .factory("broadcastFactory", function ($resource) {
         return $resource(null, null, {
-            moveCompleted: {
-                url: "rest/player/:id/move/complete",
-                method: 'GET'
-            },
+//            moveCompleted: {
+//                url: "rest/player/:id/move/complete",
+//                method: 'GET'
+//            },
             start: {
                 url: "rest/start",
                 method: 'GET'
             }
         });
+    })
+
+    .factory("moveService", function() {
+        return {
+            calculateShift: function (object, x, y) {
+                var dx = object.x - x;
+                var dy = object.y - y;
+                return Math.floor(Math.sqrt(dx * dx + dy * dy));
+            }
+        }
     })

@@ -23,6 +23,9 @@ public class Team implements Entity {
 
     protected TeamStateEnum state;
 
+    public Team() {
+    }
+
     public Team(String name, String color) {
         this.name = name;
         this.color = color;

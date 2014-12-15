@@ -26,21 +26,15 @@ public class BroadcastController {
     @Resource
     private IPitchService pitchService;
 
-    @MessageMapping("/fmInit")
+    @MessageMapping("/init")
     @SendTo("/fmInitialized")
     public Pitch initialize() {
-        return matchPerformer.getPitch();
-    }
-
-    @RequestMapping(value = "player/{id}/move/complete", method = RequestMethod.GET)
-    @ResponseStatus(value = HttpStatus.OK)
-    public void onMoveComplete(@PathVariable("id") String id) {
-        matchPerformer.completeMove(id);
+        return pitchService.getPitch();
     }
 
     @RequestMapping(value = "start", method = RequestMethod.GET)
     @ResponseStatus(value = HttpStatus.OK)
     public void startSimulation() {
-        pitchService.start(matchPerformer.getPitch());
+        pitchService.start(pitchService.getPitch());
     }
 }

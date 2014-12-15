@@ -2,6 +2,7 @@ package pl.fm.web.service.impl;
 
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
+import pl.fm.web.dao.IPitchDao;
 import pl.fm.web.model.Pitch;
 import pl.fm.web.model.Team;
 import pl.fm.web.model.enums.PitchStateEnum;
@@ -21,6 +22,9 @@ public class PitchServiceImpl extends BusinessObjectServiceImpl<Pitch> implement
     @Resource
     private ITeamService teamService;
 
+    @Resource
+    private IPitchDao pitchDao;
+
     @Override
     @Async
     public void think(Pitch pitch) {
@@ -28,37 +32,28 @@ public class PitchServiceImpl extends BusinessObjectServiceImpl<Pitch> implement
         Team guestTeam = pitch.getGuestTeam();
         Team hostTeam = pitch.getHostTeam();
 
-//        switch (pitch.getState()) {
-//            case WAITING:
-//
-//                if (guestTeam.getState() != TeamStateEnum.WAITING) {
-//                    teamService.wait(guestTeam);
-//                }
-//                if (hostTeam.getState() != TeamStateEnum.WAITING) {
-//                    teamService.wait(hostTeam);
-//                }
-//
-//                break;
-//
-//            case INTRODUCING_PLAYERS:
-//
-//
-//                break;
-//
-//            case MATCH:
-//
-//
-//                break;
-//        }
         if (pitch.getState() == PitchStateEnum.MATCH) {
             teamService.think(guestTeam);
             teamService.think(hostTeam);
         }
+
+        pitchDao.update(pitch);
     }
 
     @Override
     @Async
     public void start(Pitch pitch) {
         pitch.setState(PitchStateEnum.MATCH);
+        pitchDao.update(pitch);
+    }
+
+    @Override
+    public void save(Pitch pitch) {
+        pitchDao.save(pitch);
+    }
+
+    @Override
+    public Pitch getPitch() {
+        return pitchDao.get();
     }
 }

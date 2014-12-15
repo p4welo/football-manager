@@ -4,6 +4,8 @@ package pl.fm.web.model;
  * Created by parado on 2014-11-25.
  */
 public class GoalKeeper extends AbstractPlayer {
+    public GoalKeeper() {
+    }
 
     public GoalKeeper(int number, int x, int y) {
         super();
