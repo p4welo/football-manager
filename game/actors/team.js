@@ -1,6 +1,7 @@
 Team = function (game, ball, spriteName, regions, homeIndexes) {
-    this.TEAM_STATE_WAIT = 0;
-    this.TEAM_STATE_MATCH = 1;
+    this.TEAM_STATE_WAITING = 0;
+    this.TEAM_STATE_BACK_TO_HOME = 1;
+    this.TEAM_STATE_MATCH = 2;
     this.game = game;
     this.ball = ball;
     this.spriteName = spriteName;
@@ -15,7 +16,7 @@ Team = function (game, ball, spriteName, regions, homeIndexes) {
     this.controllingPlayer = null;
     this.supportingPlayer = null;
 
-    this.state = Team.TEAM_STATE_MATCH;
+    this.state = Team.TEAM_STATE_WAITING;
 
     function resolveHomeRegions(regions, homeIndexes) {
         var result = [];
@@ -47,7 +48,10 @@ Team.prototype.update = function () {
         this.ball.owner = player;
     }
 
-    if (this.state == Team.TEAM_STATE_WAIT) {
+    if (this.state == Team.TEAM_STATE_WAITING) {
+    }
+    else if (this.state == Team.TEAM_STATE_BACK_TO_HOME) {
+
     }
     else if (this.state = Team.TEAM_STATE_MATCH) {
 
@@ -60,4 +64,19 @@ Team.prototype.update = function () {
 
 
     }
+}
+
+Team.prototype.backToHome = function (weHaveBall) {
+    this.state = Team.TEAM_STATE_BACK_TO_HOME;
+
+    for (var i = 0; i < this.players.length; i++) {
+        this.players[i].backToHome();
+    }
+    this.goalkeeper.backToHome();
+}
+
+Team.prototype.play = function () {
+    this.state = Team.TEAM_STATE_MATCH;
+
+
 }

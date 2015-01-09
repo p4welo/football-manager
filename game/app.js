@@ -15,6 +15,8 @@ function preload() {
     game.physics.startSystem(Phaser.Physics.ARCADE);
     game.load.audio('loop', ['assets/audio/loop.mp3', 'assets/audio/loop.ogg'])
     game.load.audio('kick', ['assets/audio/kick.mp3', 'assets/audio/kick.ogg'])
+    game.load.audio('start', ['assets/audio/start.mp3', 'assets/audio/start.ogg'])
+    game.load.audio('goal', ['assets/audio/goal.mp3', 'assets/audio/goal.ogg'])
 
     game.load.image('pitch', 'assets/img/pitch.jpg');
     game.load.image('team1', 'assets/img/team1.png');
@@ -26,8 +28,7 @@ function preload() {
 function create() {
     game.world.setBounds(0, 0, 900, 450);
     game.add.sprite(0, 0, 'back');
-    var music = game.add.audio('loop', 1, true);
-    music.play('', 0, 1, true);
+    game.add.audio('loop', 0.5, true).play('', 0, 0.3, true);
 
     pitch = new Pitch(game);
     pitch.create();
@@ -39,5 +40,9 @@ function update() {
 }
 
 function render() {
-    game.debug.text('0 : 0', 45, 32);
+    game.debug.text(pitch.hostGoal.scoredGoals + ' : ' + pitch.guestGoal.scoredGoals, 45, 32);
+}
+
+function start() {
+    pitch.start();
 }

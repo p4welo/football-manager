@@ -7,7 +7,7 @@ Ball = function (game, playingArea) {
 }
 
 Ball.prototype.create = function () {
-    this.entity.placeAtPosition(new Vector2D(this.playingArea.centerX, this.playingArea.centerY))
+//    this.entity.placeAtPosition(new Vector2D(this.playingArea.centerX, this.playingArea.centerY))
 }
 
 Ball.prototype.update = function () {
@@ -33,4 +33,8 @@ Ball.prototype.trap = function (owner) {
 
 Ball.prototype.placeAtPosition = function (newPosition) {
 
+}
+
+Ball.prototype.backToHome = function () {
+    this.entity.placeAtPosition(new Vector2D(this.playingArea.centerX, this.playingArea.centerY));
 }

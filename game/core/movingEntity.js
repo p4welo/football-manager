@@ -36,9 +36,9 @@ MovingEntity.prototype.kick = function (direction, force) {
     this.movement = this.game.add.tween(this.object.body).to({ x: direction.x, y: direction.y }, 3000, Phaser.Easing.Cubic.Out, true, 0, 0, false)
     this.movement.onComplete.add(function () {
         this.movement = null;
-    }, this)
-    var music = game.add.audio('kick', 1, false);
-    music.play('', 0, 1, false);
+    }, this);
+    game.add.audio('kick', 1, false)
+        .play('', 0, 1, false);
 }
 
 MovingEntity.prototype.inMove = function () {

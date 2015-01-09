@@ -1,6 +1,7 @@
-Goal = function (game, centerX, centerY, isLeftGoal) {
+Goal = function (game, centerX, centerY, isLeftGoal, ball) {
     this.game = game;
     this.center = new Vector2D(centerX, centerY);
+    this.ball;
 
     var higherPost = new Vector2D(centerX, centerY - 75);
     var lowerPost = new Vector2D(centerX, centerY + 75);
@@ -26,7 +27,11 @@ Goal.prototype.create = function () {
 Goal.prototype.update = function () {
 }
 
-Goal.prototype.scored = function (ball) {
+Goal.prototype.scored = function () {
+    if (false) {
+        this.scoredGoals++;
+        game.add.audio('goal', 1, false).play('', 0, 1, false);
+    }
 //    TODO: method returns true if the ball has crossed the goal line (oldPosition & currentPosition) and increments scoredGoals++
     return false;
 }

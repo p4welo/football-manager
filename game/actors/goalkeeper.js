@@ -13,3 +13,6 @@ Goalkeeper.prototype.create = function () {
 Goalkeeper.prototype.update = function () {
 
 }
+Goalkeeper.prototype.backToHome = function () {
+
+}
