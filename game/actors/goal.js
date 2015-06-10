@@ -1,10 +1,10 @@
-Goal = function (game, centerX, centerY, isLeftGoal, ball) {
+Goal = function (game, center, isLeftGoal, ball) {
     this.game = game;
-    this.center = new Vector2D(centerX, centerY);
+    this.center = center;
     this.ball;
 
-    var higherPost = new Vector2D(centerX, centerY - 75);
-    var lowerPost = new Vector2D(centerX, centerY + 75);
+    var higherPost = center.sub(0,75);
+    var lowerPost = center.add(0, 75);
 
     this.leftPost = isLeftGoal ? higherPost : lowerPost;
     this.rightPost = isLeftGoal ? lowerPost : higherPost;

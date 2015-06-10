@@ -2,8 +2,7 @@ Pitch = function (game) {
     this.game = game;
     this.playingArea = {
         bounds: game.world.getBounds(),
-        centerX: game.world.centerX,
-        centerY: game.world.centerY
+        center: new Vector2D(game.world.centerX, game.world.centerY)
     }
     this.gameOn = false;
     this.gameOnAt = null;
@@ -11,10 +10,10 @@ Pitch = function (game) {
     this.regions = calculateRegions(this.playingArea.bounds.width, this.playingArea.bounds.height);
 
     this.ball = new Ball(game, this.playingArea);
-    this.hostGoal = new Goal(this.game, this.playingArea.bounds.x, this.playingArea.bounds.height / 2, true, this.ball);
-    this.guestGoal = new Goal(this.game, this.playingArea.bounds.width, this.playingArea.bounds.height / 2, false, this.ball);
-    this.hostTeam = new Team(game, this.ball, "team1", this.regions, [6, 1, 13, 2, 14]);
-    this.guestTeam = new Team(game, this.ball, "team2", this.regions, [11, 4, 16, 3, 15]);
+    this.hostGoal = new Goal(this.game, new Vector2D(this.playingArea.bounds.x, this.playingArea.bounds.height / 2), true, this.ball);
+    this.guestGoal = new Goal(this.game, new Vector2D(this.playingArea.bounds.width, this.playingArea.bounds.height / 2), false, this.ball);
+    this.hostTeam = new Team(game, this, this.ball, "team1", this.regions, [6, 2, 14, 1, 13]);
+    this.guestTeam = new Team(game, this, this.ball, "team2", this.regions, [11, 3, 15, 4, 16]);
 
     function calculateRegions(width, height) {
         var xSteps = width / 6;
@@ -45,11 +44,16 @@ Pitch = function (game) {
 }
 
 Pitch.prototype.create = function () {
-    this.ball.create();
-    this.hostTeam.create();
-    this.guestTeam.create();
-    this.hostGoal.create();
-    this.guestGoal.create();
+    [
+        this.ball,
+        this.hostTeam,
+        this.guestTeam,
+        this.hostGoal,
+        this.guestGoal
+    ]
+        .forEach(function (o) {
+            o.create();
+        })
 }
 
 Pitch.prototype.update = function () {
@@ -72,11 +76,16 @@ Pitch.prototype.update = function () {
         }
     }
 
-    this.ball.update();
-    this.hostTeam.update();
-    this.guestTeam.update();
-    this.hostGoal.update();
-    this.guestGoal.update();
+    [
+        this.ball,
+        this.hostTeam,
+        this.guestTeam,
+        this.hostGoal,
+        this.guestGoal
+    ]
+        .forEach(function (o) {
+            o.update();
+        })
 }
 
 Pitch.prototype.start = function () {

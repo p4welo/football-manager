@@ -7,7 +7,6 @@ Player = function (game, spriteName, team, homeRegion) {
 }
 
 Player.prototype.create = function () {
-//    this.entity.placeAtPosition(this.homeRegion.centerPoint())
 }
 
 Player.prototype.update = function () {
@@ -24,4 +23,8 @@ Player.prototype.inMove = function () {
 
 Player.prototype.backToHome = function () {
     this.entity.placeAtPosition(this.homeRegion.centerPoint())
+}
+
+Player.prototype.placeAtPosition = function (point) {
+    this.entity.placeAtPosition(point)
 }

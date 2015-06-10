@@ -8,8 +8,8 @@ MovingEntity = function (game, spriteName, size) {
 
 MovingEntity.prototype.placeAtPosition = function (position) {
     if (this.object == null) {
-
-        this.object = this.game.add.sprite(position.x, position.y, this.spriteName);
+        console.log(this.size);
+        this.object = this.game.add.sprite(position.x - this.size, position.y - this.size, this.spriteName);
         this.game.physics.enable(this.object, Phaser.Physics.ARCADE);
         this.object.body.collideWorldBounds = true;
     }
@@ -29,6 +29,7 @@ MovingEntity.prototype.move = function (position, time) {
 MovingEntity.prototype.stop = function () {
     if (this.movement != null) {
         this.movement.stop();
+        this.movement = null;
     }
 }
 

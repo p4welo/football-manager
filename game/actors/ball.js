@@ -1,5 +1,5 @@
 Ball = function (game, playingArea) {
-    this.entity = new MovingEntity(game, "ball", 5);
+    this.entity = new MovingEntity(game, "ball", 3);
     this.playingArea = playingArea;
 
     this.oldPosition = null;
@@ -7,7 +7,6 @@ Ball = function (game, playingArea) {
 }
 
 Ball.prototype.create = function () {
-//    this.entity.placeAtPosition(new Vector2D(this.playingArea.centerX, this.playingArea.centerY))
 }
 
 Ball.prototype.update = function () {
@@ -27,7 +26,7 @@ Ball.prototype.kick = function (direction, force) {
 }
 
 Ball.prototype.trap = function (owner) {
-    this.entity.movement.stop();
+    this.entity.stop();
     this.owner = owner;
 }
 
@@ -36,5 +35,5 @@ Ball.prototype.placeAtPosition = function (newPosition) {
 }
 
 Ball.prototype.backToHome = function () {
-    this.entity.placeAtPosition(new Vector2D(this.playingArea.centerX, this.playingArea.centerY));
+    this.entity.placeAtPosition(new Vector2D(this.playingArea.center.x, this.playingArea.center.y));
 }

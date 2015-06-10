@@ -7,12 +7,12 @@ Goalkeeper = function (game, spriteName, team, homeRegion) {
 }
 
 Goalkeeper.prototype.create = function () {
-    this.entity.placeAtPosition(this.homeRegion.centerPoint())
+
 }
 
 Goalkeeper.prototype.update = function () {
 
 }
 Goalkeeper.prototype.backToHome = function () {
-
+    this.entity.placeAtPosition(this.homeRegion.centerPoint())
 }

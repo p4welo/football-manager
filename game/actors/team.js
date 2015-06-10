@@ -1,11 +1,14 @@
-Team = function (game, ball, spriteName, regions, homeIndexes) {
+Team = function (game, pitch, ball, spriteName, regions, homeIndexes) {
     this.TEAM_STATE_WAITING = 0;
     this.TEAM_STATE_BACK_TO_HOME = 1;
     this.TEAM_STATE_MATCH = 2;
+
     this.game = game;
     this.ball = ball;
+    this.pitch = pitch;
     this.spriteName = spriteName;
     this.regions = regions;
+    this.homeIndexes = homeIndexes;
 
     this.homeRegions = resolveHomeRegions(regions, homeIndexes);
     this.players = createPlayers(this.homeRegions, spriteName, this);
@@ -61,15 +64,18 @@ Team.prototype.update = function () {
                 this.ball, this.players[i], trapBall(this.players[i]), null, this
             );
         }
-
-
     }
 }
 
 Team.prototype.backToHome = function (weHaveBall) {
     this.state = Team.TEAM_STATE_BACK_TO_HOME;
-
-    for (var i = 0; i < this.players.length; i++) {
+    var startI = 0;
+    if (weHaveBall) {
+        startI = 2;
+        this.players[0].placeAtPosition(this.pitch.playingArea.center);
+        this.players[1].placeAtPosition(this.pitch.playingArea.center.sub(0, 30));
+    }
+    for (var i = startI; i < this.players.length; i++) {
         this.players[i].backToHome();
     }
     this.goalkeeper.backToHome();
