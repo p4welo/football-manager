@@ -1,4 +1,4 @@
-package com.pr.web.dto;
+package pl.p4welo.fm.web.dto;
 
 import java.util.Date;
 

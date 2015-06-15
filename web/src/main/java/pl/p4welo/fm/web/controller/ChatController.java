@@ -1,7 +1,7 @@
-package com.pr.web.controller;
+package pl.p4welo.fm.web.controller;
 
-import com.pr.web.dto.Message;
-import com.pr.web.dto.OutputMessage;
+import pl.p4welo.fm.web.dto.Message;
+import pl.p4welo.fm.web.dto.OutputMessage;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.stereotype.Controller;

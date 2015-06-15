@@ -1,4 +1,4 @@
-package com.pr.web.dto;
+package pl.p4welo.fm.web.dto;
 
 /**
  * Created by parado on 2015-06-15.

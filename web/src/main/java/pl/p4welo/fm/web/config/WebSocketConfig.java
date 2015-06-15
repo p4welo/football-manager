@@ -1,4 +1,4 @@
-package com.pr.web.config;
+package pl.p4welo.fm.web.config;
 
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
