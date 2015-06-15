@@ -1,3 +1,0 @@
-Wall2D = function () {
-
-}

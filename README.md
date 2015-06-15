@@ -1,2 +1,0 @@
-football-manager - MATCH SIMULATION
-================
