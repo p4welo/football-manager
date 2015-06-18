@@ -10,6 +10,7 @@
     "angular": "~1.4.0",
     "sockjs": "0.3.4",
     "stomp-websocket": "2.3.4",
-    "lodash": "~3.9.3"
+    "lodash": "~3.9.3",
+    "angular-resource": "~1.4.1"
   }
 }

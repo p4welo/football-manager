@@ -118,6 +118,10 @@ body.loading, .loader {
     .navbar .active, .navbar li:hover {
         box-shadow: inset 0 -5px 1px -1px #388E3C;
     }
+
+    ul.navbar-nav {
+        margin-right: -70px;
+    }
 }
 
 @media (max-width: 767px) {
@@ -130,14 +134,6 @@ body.loading, .loader {
 body, h1, h2, h3, h4, h5 {
     font-family: 'Roboto', sans-serif !important;
     font-weight: 300;
-}
-
-.navbar-toggle {
-    float: left;
-}
-
-.navbar-first .contact-link i {
-    /*margin-top: 3px;*/
 }
 
 .navbar-first .contact-link {
@@ -156,10 +152,10 @@ body, h1, h2, h3, h4, h5 {
 
 
 /*BALL*/
-uiload {
+.uiload {
     display: inline-block;
     position: relative; }
-uiload > div {
+.uiload > div {
     position: relative; }
 
 .uil-ball-css {
@@ -356,3 +352,64 @@ uiload > div {
     -o-animation: uil-ball-anim0 1s linear infinite;
     animation: uil-ball-anim0 1s linear infinite; }
 /*BALL END*/
+
+
+@-webkit-keyframes goal {
+    0% {
+        background-color: #388e3c;
+        color: white;
+    }
+    10% {
+        background-color: white;
+        color: inherit;
+    }
+    20% {
+        background-color: #388e3c;
+        color: white;
+    }
+    30% {
+        background-color: white;
+        color: inherit;
+    }
+    40% {
+        background-color: #388e3c;
+        color: white;
+    }
+    50% {
+        background-color: white;
+        color: inherit;
+    }
+    60% {
+        background-color: #388e3c;
+        color: white;
+    }
+    70% {
+        background-color: white;
+        color: inherit;
+    }
+    80% {
+        background-color: #388e3c;
+        color: white;
+    }
+    90% {
+        background-color: white;
+        color: inherit;
+    }
+    100% {
+        background-color: #388e3c;
+        color: white;
+    }
+}
+.goal {
+    background-color: #388e3c;
+    color: white;
+    -webkit-animation-direction: normal;
+    -webkit-animation-duration: 2s;
+    -webkit-animation-iteration-count: 2;
+    -webkit-animation-name: goal;
+    -webkit-animation-timing-function: linear;
+}
+
+.navbar-brand > img {
+    height: 35px;
+}
