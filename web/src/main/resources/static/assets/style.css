@@ -1,11 +1,19 @@
-body {
-    /*background-color: white;*/
+@font-face {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 300;
+    src: local('Roboto Light'), local('Roboto-Light'), url(http://fonts.gstatic.com/s/roboto/v15/Pru33qjShpZSmG3z6VYwnVtXRa8TVwTICgirnJhmVJw.woff2) format('woff2'), url(http://fonts.gstatic.com/s/roboto/v15/Pru33qjShpZSmG3z6VYwnT8E0i7KZn-EPnyo3HZu7kw.woff) format('woff');
 }
+@font-face {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Roboto'), local('Roboto-Regular'), url(http://fonts.gstatic.com/s/roboto/v15/fIKu7GwZTy_12XzG_jt8eA.woff2) format('woff2'), url(http://fonts.gstatic.com/s/roboto/v15/Xyjz-jNkfiYuJf8UC3Lizw.woff) format('woff');
+}
+
 
 body.loading, .loader {
     background-color: white;
-    /*background-color: #08C;*/
-    /*background-color: #FFB800;*/
 }
 
 .navbar-default {
@@ -25,7 +33,6 @@ body.loading, .loader {
 }
 
 .hidden {
-/*.main-content {*/
     display: none;
 }
 
@@ -42,13 +49,9 @@ body.loading, .loader {
 }
 
 .spinner > div {
-    /*background-color: white;*/
     height: 100%;
     width: 6px;
     display: inline-block;
-
-    /*-webkit-animation: stretchdelay 1.2s infinite ease-in-out;*/
-    /*animation: stretchdelay 1.2s infinite ease-in-out;*/
 }
 
 .spinner .rect2 {
@@ -150,210 +153,6 @@ body, h1, h2, h3, h4, h5 {
     z-index: 90;
 }
 
-
-/*BALL*/
-.uiload {
-    display: inline-block;
-    position: relative; }
-.uiload > div {
-    position: relative; }
-
-.uil-ball-css {
-    background: none;
-    position: relative;
-    width: 200px;
-    height: 200px; }
-
-@-webkit-keyframes uil-ball-anim0 {
-    0% {
-        top: 160px; }
-
-    12% {
-        top: 105px; }
-
-    25% {
-        top: 62px; }
-
-    37% {
-        top: 38px; }
-
-    50% {
-        top: 30px; }
-
-    62% {
-        top: 37px; }
-
-    75% {
-        top: 62px; }
-
-    87% {
-        top: 101px; }
-
-    100% {
-        top: 160px; } }
-
-@-moz-keyframes uil-ball-anim0 {
-    0% {
-        top: 160px; }
-
-    12% {
-        top: 105px; }
-
-    25% {
-        top: 62px; }
-
-    37% {
-        top: 38px; }
-
-    50% {
-        top: 30px; }
-
-    62% {
-        top: 37px; }
-
-    75% {
-        top: 62px; }
-
-    87% {
-        top: 101px; }
-
-    100% {
-        top: 160px; } }
-
-@-ms-keyframes uil-ball-anim0 {
-    0% {
-        top: 160px; }
-
-    12% {
-        top: 105px; }
-
-    25% {
-        top: 62px; }
-
-    37% {
-        top: 38px; }
-
-    50% {
-        top: 30px; }
-
-    62% {
-        top: 37px; }
-
-    75% {
-        top: 62px; }
-
-    87% {
-        top: 101px; }
-
-    100% {
-        top: 160px; } }
-
-@keyframes uil-ball-anim0 {
-    0% {
-        top: 160px; }
-
-    12% {
-        top: 105px; }
-
-    25% {
-        top: 62px; }
-
-    37% {
-        top: 38px; }
-
-    50% {
-        top: 30px; }
-
-    62% {
-        top: 37px; }
-
-    75% {
-        top: 62px; }
-
-    87% {
-        top: 101px; }
-
-    100% {
-        top: 160px; } }
-
-@-webkit-keyframes uil-ball-anim1 {
-    0% {
-        -ms-transform: translate(0, -60px) rotate(0deg) translate(60px, 0);
-        -moz-transform: translate(0, -60px) rotate(0deg) translate(60px, 0);
-        -webkit-transform: translate(0, -60px) rotate(0deg) translate(60px, 0);
-        -o-transform: translate(0, -60px) rotate(0deg) translate(60px, 0);
-        transform: translate(0, -60px) rotate(0deg) translate(60px, 0); }
-
-    100% {
-        -ms-transform: translate(0, -60px) rotate(360deg) translate(60px, 0);
-        -moz-transform: translate(0, -60px) rotate(360deg) translate(60px, 0);
-        -webkit-transform: translate(0, -60px) rotate(360deg) translate(60px, 0);
-        -o-transform: translate(0, -60px) rotate(360deg) translate(60px, 0);
-        transform: translate(0, -60px) rotate(360deg) translate(60px, 0); } }
-
-@-moz-keyframes uil-ball-anim1 {
-    0% {
-        -ms-transform: translate(0, -60px) rotate(0deg) translate(60px, 0);
-        -moz-transform: translate(0, -60px) rotate(0deg) translate(60px, 0);
-        -webkit-transform: translate(0, -60px) rotate(0deg) translate(60px, 0);
-        -o-transform: translate(0, -60px) rotate(0deg) translate(60px, 0);
-        transform: translate(0, -60px) rotate(0deg) translate(60px, 0); }
-
-    100% {
-        -ms-transform: translate(0, -60px) rotate(360deg) translate(60px, 0);
-        -moz-transform: translate(0, -60px) rotate(360deg) translate(60px, 0);
-        -webkit-transform: translate(0, -60px) rotate(360deg) translate(60px, 0);
-        -o-transform: translate(0, -60px) rotate(360deg) translate(60px, 0);
-        transform: translate(0, -60px) rotate(360deg) translate(60px, 0); } }
-
-@-ms-keyframes uil-ball-anim1 {
-    0% {
-        -ms-transform: translate(0, -60px) rotate(0deg) translate(60px, 0);
-        -moz-transform: translate(0, -60px) rotate(0deg) translate(60px, 0);
-        -webkit-transform: translate(0, -60px) rotate(0deg) translate(60px, 0);
-        -o-transform: translate(0, -60px) rotate(0deg) translate(60px, 0);
-        transform: translate(0, -60px) rotate(0deg) translate(60px, 0); }
-
-    100% {
-        -ms-transform: translate(0, -60px) rotate(360deg) translate(60px, 0);
-        -moz-transform: translate(0, -60px) rotate(360deg) translate(60px, 0);
-        -webkit-transform: translate(0, -60px) rotate(360deg) translate(60px, 0);
-        -o-transform: translate(0, -60px) rotate(360deg) translate(60px, 0);
-        transform: translate(0, -60px) rotate(360deg) translate(60px, 0); } }
-
-@keyframes uil-ball-anim1 {
-    0% {
-        -ms-transform: translate(0, -60px) rotate(0deg) translate(60px, 0);
-        -moz-transform: translate(0, -60px) rotate(0deg) translate(60px, 0);
-        -webkit-transform: translate(0, -60px) rotate(0deg) translate(60px, 0);
-        -o-transform: translate(0, -60px) rotate(0deg) translate(60px, 0);
-        transform: translate(0, -60px) rotate(0deg) translate(60px, 0); }
-
-    100% {
-        -ms-transform: translate(0, -60px) rotate(360deg) translate(60px, 0);
-        -moz-transform: translate(0, -60px) rotate(360deg) translate(60px, 0);
-        -webkit-transform: translate(0, -60px) rotate(360deg) translate(60px, 0);
-        -o-transform: translate(0, -60px) rotate(360deg) translate(60px, 0);
-        transform: translate(0, -60px) rotate(360deg) translate(60px, 0); } }
-
-.uil-ball-css > div {
-    position: absolute;
-    top: 0px;
-    /*left: 100px;*/
-    width: 44px;
-    height: 44px;
-    margin-top: -200px;
-    margin-left: -22px;
-    border-radius: 22px;
-    background-image: url('ball.gif');
-    -ms-animation: uil-ball-anim0 1s linear infinite;
-    -moz-animation: uil-ball-anim0 1s linear infinite;
-    -webkit-animation: uil-ball-anim0 1s linear infinite;
-    -o-animation: uil-ball-anim0 1s linear infinite;
-    animation: uil-ball-anim0 1s linear infinite; }
-/*BALL END*/
-
-
 @-webkit-keyframes goal {
     0% {
         background-color: #388e3c;
@@ -400,14 +199,157 @@ body, h1, h2, h3, h4, h5 {
         color: white;
     }
 }
+
+@-moz-keyframes goal {
+    0% {
+        background-color: #388e3c;
+        color: white;
+    }
+    10% {
+        background-color: white;
+        color: inherit;
+    }
+    20% {
+        background-color: #388e3c;
+        color: white;
+    }
+    30% {
+        background-color: white;
+        color: inherit;
+    }
+    40% {
+        background-color: #388e3c;
+        color: white;
+    }
+    50% {
+        background-color: white;
+        color: inherit;
+    }
+    60% {
+        background-color: #388e3c;
+        color: white;
+    }
+    70% {
+        background-color: white;
+        color: inherit;
+    }
+    80% {
+        background-color: #388e3c;
+        color: white;
+    }
+    90% {
+        background-color: white;
+        color: inherit;
+    }
+    100% {
+        background-color: #388e3c;
+        color: white;
+    }
+}
+
+@-ms-keyframes goal {
+    0% {
+        background-color: #388e3c;
+        color: white;
+    }
+    10% {
+        background-color: white;
+        color: inherit;
+    }
+    20% {
+        background-color: #388e3c;
+        color: white;
+    }
+    30% {
+        background-color: white;
+        color: inherit;
+    }
+    40% {
+        background-color: #388e3c;
+        color: white;
+    }
+    50% {
+        background-color: white;
+        color: inherit;
+    }
+    60% {
+        background-color: #388e3c;
+        color: white;
+    }
+    70% {
+        background-color: white;
+        color: inherit;
+    }
+    80% {
+        background-color: #388e3c;
+        color: white;
+    }
+    90% {
+        background-color: white;
+        color: inherit;
+    }
+    100% {
+        background-color: #388e3c;
+        color: white;
+    }
+}
+
+@keyframes goal {
+    0% {
+        background-color: #388e3c;
+        color: white;
+    }
+    10% {
+        background-color: white;
+        color: inherit;
+    }
+    20% {
+        background-color: #388e3c;
+        color: white;
+    }
+    30% {
+        background-color: white;
+        color: inherit;
+    }
+    40% {
+        background-color: #388e3c;
+        color: white;
+    }
+    50% {
+        background-color: white;
+        color: inherit;
+    }
+    60% {
+        background-color: #388e3c;
+        color: white;
+    }
+    70% {
+        background-color: white;
+        color: inherit;
+    }
+    80% {
+        background-color: #388e3c;
+        color: white;
+    }
+    90% {
+        background-color: white;
+        color: inherit;
+    }
+    100% {
+        background-color: #388e3c;
+        color: white;
+    }
+}
+
 .goal {
     background-color: #388e3c;
     color: white;
-    -webkit-animation-direction: normal;
-    -webkit-animation-duration: 2s;
-    -webkit-animation-iteration-count: 2;
-    -webkit-animation-name: goal;
-    -webkit-animation-timing-function: linear;
+
+    -ms-animation: goal 2s linear 2;
+    -moz-animation: goal 2s linear 2;
+    -webkit-animation: goal 2s linear 2;
+    -o-animation: goal 2s linear 2;
+    animation: goal 2s linear 2;
 }
 
 .navbar-brand > img {
