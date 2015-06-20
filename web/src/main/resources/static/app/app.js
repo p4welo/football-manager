@@ -3,10 +3,12 @@ angular.module('football-manager', ["ngResource"])
     .controller("matchCtrl", function ($scope, $timeout, testService) {
         $scope.inProgress = false;
         $scope.currentTime = 0;
+        $scope.hostPossession = 50;
 
         function matchIteration() {
             $timeout(function () {
                 $scope.currentTime++;
+                $scope.hostPossession += Math.floor(Math.random() * (5 + 5 + 1)) - 5;
                 $scope.events.forEach(function (e) {
                     if (e.time == $scope.currentTime) {
                         $scope.actualEvents.push(e);

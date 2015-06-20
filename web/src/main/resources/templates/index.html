@@ -116,7 +116,8 @@
                     <div class="col-lg-10">
                         <div class="radio radio-primary">
                             <label>
-                                <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked=""/>
+                                <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1"
+                                       checked=""/>
                                 Option one is this
                             </label>
                         </div>
@@ -164,14 +165,41 @@
             <div class="owl-carousel">
                 <div class="item" data-hash="1">
                     <div class="container" ng-controller="matchCtrl">
-                        <h3>Mecz! {{currentTime}}:00</h3>
-                        <ul>
-                            <li ng-repeat="t in test">{{t.name}}</li>
-                        </ul>
-                        <button class="btn btn-material-green-700" ng-click="start()" ng-disabled="inProgress">Rozpocznij!</button>
+                        <div class="row">
+                            <div class="container">
+                                <div class="jumbotron col-sm-4 col-sm-offset-4 text-center">
+                                    <h2>
+                                        <span ng-bind="currentTime"></span>
+                                        min
+                                    </h2>
+
+                                    <h1>1:0</h1>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <div class="container">
+                                <h3 class="pull-left">FC Wymiatacze</h3>
+
+                                <h3 class="pull-right">Odra Wodzisław</h3>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="container">
+                                <div class="progress posession-bar">
+                                    <div class="progress-bar progress-bar-success" ng-style="{width: hostPossession+'%'}"></div>
+                                    <div class="progress-bar progress-bar-warning" ng-style="{width: 100-hostPossession+'%'}"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="btn btn-material-green-700" ng-click="start()" ng-disabled="inProgress">
+                            Rozpocznij!
+                        </button>
 
 
-                        <div ng-repeat="e in actualEvents | orderBy: '-time'" class="panel panel-default" style="margin-bottom: 0; font-size: 18px" ng-class="{'goal' : e.isGoalScored}">
+                        <div ng-repeat="e in actualEvents | orderBy: '-time'" class="panel panel-default"
+                             style="margin-bottom: 0; font-size: 18px" ng-class="{'goal' : e.isGoalScored}">
                             <div class="panel-body">
                                 <small class="pull-left">
                                     <strong ng-bind="e.time"></strong>
