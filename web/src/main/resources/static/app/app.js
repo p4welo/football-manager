@@ -111,22 +111,7 @@ angular.module('football-manager', ["ngResource", 'pascalprecht.translate'])
             return $scope.hostTeam != null && $scope.guestTeam != null;
         }
         $scope.proceed = function () {
-            //window.location.hash = '#2';
             $scope.proceeding = true;
-        }
-
-        function resolveGuestList(team, teamList) {
-            var i = teamList.indexOf(team);
-            if(i != -1) {
-                teamList.splice(i, 1);
-            }
-            //var guestList = [];
-            //teamList.forEach(function (item) {
-            //    if (item.id != team.id) {
-            //        guestList.push(item);
-            //    }
-            //});
-            //return guestList;
         }
     })
 

@@ -55,10 +55,7 @@
                 <div class="navbar-collapse collapse navbar-warning-collapse">
                     <ul class="nav navbar-nav navbar-right">
                         <li class="active">
-                            <a href="#1">Symulacja</a>
-                        </li>
-                        <li>
-                            <a href="#2">Mecz</a>
+                            <a href="#1">{{'static.simulation' | translate}}</a>
                         </li>
                     </ul>
                 </div>
@@ -173,26 +170,26 @@
                     <div class="row">
                         <div class="jumbotron col-sm-6 col-sm-offset-3">
                             <h2>
-                                <strong>Gospodarze:</strong>
+                                <strong>{{'static.host.team' | translate}}:</strong>
                                 <span ng-if="hostTeam" class="animated fadeInLeft pull-right">{{ hostTeam.name }}</span>
                             </h2>
 
                             <h2>
-                                <strong>Goście:</strong>
+                                <strong>{{'static.guest.team' | translate}}:</strong>
                                 <span ng-if="guestTeam"
                                       class="animated fadeInLeft pull-right">{{ guestTeam.name }}</span>
                             </h2>
                         </div>
                     </div>
                     <h3>
-                        Wybierz drużyny
+                        {{'static.select.teams' | translate}}
                     </h3>
                     <table class="table table-hover table-selectable">
                         <thead>
                         <tr>
                             <th>#</th>
-                            <th>Nazwa</th>
-                            <th>Siła</th>
+                            <th>{{'static.name' | translate}}</th>
+                            <th>{{'static.power' | translate}}</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -207,7 +204,7 @@
                         <button class="btn btn-material-green-700 animated bounceIn pull-right"
                                 ng-click="proceed()"
                                 ng-if="teamsReady()">
-                            Rozpocznij!
+                            {{'static.begin' | translate}}!
                             <i class="glyphicon glyphicon-chevron-right"></i>
                         </button>
                     </div>
@@ -245,7 +242,7 @@
                             </div>
                         </div>
                         <button class="btn btn-material-green-700" ng-click="start()" ng-disabled="inProgress">
-                            Rozpocznij!
+                            {{'static.begin' | translate}}
                         </button>
 
 

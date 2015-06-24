@@ -3,12 +3,28 @@ angular.module('football-manager')
     .config(function ($translateProvider) {
 
         $translateProvider.translations('pl', {
-            'very.close' : "By≥o blisko!",
+            'static.begin': "Rozpocznij",
+            'static.name': "Nazwa",
+            'static.power': "Si≈Ça",
+            'static.select.teams': "Wybierz dru≈ºyny",
+            'static.guest.team': "Go≈õcie",
+            'static.host.team': "Gospodarze",
+            'static.simulation': "Symulacja",
+
+            'very.close' : "By≈Ço blisko!",
             'awful.pass' : "Kiepskie podanie do napastnika",
-            'fantastic.finish' : "Fantastyczne wykoÒczenie akcji!",
-            'bad.pass' : "To by≥o z≥e podanie..."
+            'fantastic.finish' : "Fantastyczne wyko≈Ñczenie akcji!",
+            'bad.pass' : "To by≈Ço z≈Çe podanie..."
         });
         $translateProvider.translations('en', {
+            'static.begin': "Begin",
+            'static.name': "Name",
+            'static.power': "Power",
+            'static.select.teams': "Select teams",
+            'static.guest.team': "Guest",
+            'static.host.team': "Host",
+            'static.simulation': "Simulation",
+
             'very.close' : "That was close!",
             'awful.pass' : "Awful pass to the striker",
             'fantastic.finish' : "Fantastic finish!",
