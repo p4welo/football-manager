@@ -1,5 +1,11 @@
 angular.module('football-manager', ["ngResource", 'pascalprecht.translate'])
 
+    .run(function ($rootScope, $translate) {
+        $rootScope.setLanguage = function (lang) {
+            $translate.use(lang);
+        }
+    })
+
     .controller("matchCtrl", function ($scope, $timeout) {
         $scope.inProgress = false;
         $scope.currentTime = 0;
