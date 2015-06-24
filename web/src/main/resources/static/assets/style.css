@@ -1,3 +1,7 @@
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+    display: none;
+}
+
 @font-face {
     font-family: 'Roboto';
     font-style: normal;
@@ -22,14 +26,6 @@ body.loading, .loader {
 
 .loader {
     z-index: 1100;
-}
-
-.loader, .main-content {
-    position: fixed;
-    height: 100%;
-    width: 100%;
-    top: 0;
-    left: 0;
 }
 
 .hidden {
@@ -111,6 +107,16 @@ body.loading, .loader {
     margin-bottom: 0;
     background-color: #388E3C;
     height: 40px;
+}
+
+.navbar-first .navbar-brand {
+    height: 30px;
+    padding: 5px;
+}
+
+.navbar-first .navbar-brand img {
+    height: 30px;
+    margin-right: 10px;
 }
 
 .navbar li {
@@ -358,4 +364,17 @@ body, h1, h2, h3, h4, h5 {
 
 .posession-bar {
     height: 15px;
+}
+
+.table-selectable tbody tr {
+    cursor: pointer;
+}
+
+.table-selectable tbody tr.guest-row td {
+    background-color: #F57C00;
+    color: rgba(255, 255, 255, 0.84);
+}
+.table-selectable tbody tr.host-row td {
+    background-color: #388E3C;
+    color: rgba(255, 255, 255, 0.84);
 }

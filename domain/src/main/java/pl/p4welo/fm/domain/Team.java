@@ -8,6 +8,15 @@ public class Team {
         this.name = name;
     }
 
+    public Team(int id, String name, double power, String color) {
+        this.id = id;
+        this.name = name;
+        this.power = power;
+        this.color = color;
+    }
+
+    private int id;
+
     private String name;
 
     private double power;
@@ -36,5 +45,13 @@ public class Team {
 
     public void setColor(String color) {
         this.color = color;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }

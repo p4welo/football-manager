@@ -1,6 +1,6 @@
-angular.module('football-manager', ["ngResource"])
+angular.module('football-manager', ["ngResource", 'pascalprecht.translate'])
 
-    .controller("matchCtrl", function ($scope, $timeout, testService) {
+    .controller("matchCtrl", function ($scope, $timeout) {
         $scope.inProgress = false;
         $scope.currentTime = 0;
         $scope.hostPossession = 50;
@@ -28,8 +28,6 @@ angular.module('football-manager', ["ngResource"])
             $scope.inProgress = true;
             matchIteration();
         }
-
-        $scope.test = testService.query();
 
         $scope.actualEvents = [];
         $scope.events = [
@@ -66,12 +64,89 @@ angular.module('football-manager', ["ngResource"])
         ];
     })
 
-    .factory('testService', function($resource){
-            return $resource('dupa', {}, {
-                query: {
-                    method:'GET',
-                    isArray:true
-                }
-            });
-        })
+
+
+
+    .controller("teamListCtrl", function ($scope, $timeout, teamService) {
+        $scope.proceeding = false;
+        teamService.list().$promise.then(
+            function (result) {
+                $scope.teamList = result;
+            }
+        );
+        $scope.resolveTeamClass = function (team) {
+            var result = "";
+            if (team == $scope.hostTeam) {
+                result = 'host-row';
+            }
+            else if (team == $scope.guestTeam) {
+                result = 'guest-row';
+            }
+            return result;
+        }
+
+        $scope.select = function (team) {
+            if ($scope.hostTeam == team) {
+                $scope.hostTeam = null;
+                return ;
+            }
+            else if ($scope.guestTeam == team) {
+                $scope.guestTeam = null;
+                return ;
+            }
+            if ($scope.hostTeam == null) {
+                $scope.hostTeam = team;
+            }
+            else if ($scope.guestTeam == null){
+                $scope.guestTeam = team;
+            }
+        }
+        $scope.teamsReady = function () {
+            return $scope.hostTeam != null && $scope.guestTeam != null;
+        }
+        $scope.proceed = function () {
+            //window.location.hash = '#2';
+            $scope.proceeding = true;
+        }
+
+        function resolveGuestList(team, teamList) {
+            var i = teamList.indexOf(team);
+            if(i != -1) {
+                teamList.splice(i, 1);
+            }
+            //var guestList = [];
+            //teamList.forEach(function (item) {
+            //    if (item.id != team.id) {
+            //        guestList.push(item);
+            //    }
+            //});
+            //return guestList;
+        }
+    })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    .factory('teamService', function ($resource) {
+        return $resource(null, null, {
+            list: {
+                url: "team/list",
+                method: 'GET',
+                isArray: true
+            }
+        });
+    })
 ;
