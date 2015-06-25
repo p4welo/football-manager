@@ -5,18 +5,32 @@ package pl.p4welo.fm.domain.match;
  */
 public class Event {
 
-    public Event(int time, boolean isHostAction, boolean isGoalScored, String messageId) {
-        this.time = time;
-        this.isHostAction = isHostAction;
-        this.isGoalScored = isGoalScored;
-        this.messageId = messageId;
-    }
 
     private int time;
-    private boolean isHostAction;
-    private boolean isGoalScored;
+    private boolean hostPossession;
+    private boolean scoringOpportunity;
+    private boolean goalScored;
     private String performer;
     private String messageId;
+
+    public Event(int time, boolean hostPossession) {
+        this.time = time;
+        this.hostPossession = hostPossession;
+    }
+
+    public Event(int time, boolean hostPossession, boolean goalScored) {
+        this.time = time;
+        this.hostPossession = hostPossession;
+        this.goalScored = goalScored;
+    }
+
+    public boolean isScoringOpportunity() {
+        return scoringOpportunity;
+    }
+
+    public void setIsScoringOpportunity(boolean isScoringOpportunity) {
+        this.scoringOpportunity = isScoringOpportunity;
+    }
 
     public int getTime() {
         return time;
@@ -26,20 +40,20 @@ public class Event {
         this.time = time;
     }
 
-    public boolean isHostAction() {
-        return isHostAction;
+    public boolean isHostPossession() {
+        return hostPossession;
     }
 
-    public void setIsHostAction(boolean isHostAction) {
-        this.isHostAction = isHostAction;
+    public void setIsHostPossession(boolean isHostPossession) {
+        this.hostPossession = isHostPossession;
     }
 
     public boolean isGoalScored() {
-        return isGoalScored;
+        return goalScored;
     }
 
     public void setIsGoalScored(boolean isGoalScored) {
-        this.isGoalScored = isGoalScored;
+        this.goalScored = isGoalScored;
     }
 
     public String getPerformer() {

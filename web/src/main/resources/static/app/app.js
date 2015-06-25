@@ -6,72 +6,6 @@ angular.module('football-manager', ["ngResource", 'pascalprecht.translate'])
         }
     })
 
-    .controller("matchCtrl", function ($scope, $timeout) {
-        $scope.inProgress = false;
-        $scope.currentTime = 0;
-        $scope.hostPossession = 50;
-
-        function matchIteration() {
-            $timeout(function () {
-                $scope.currentTime++;
-                $scope.hostPossession += Math.floor(Math.random() * (5 + 5 + 1)) - 5;
-                $scope.events.forEach(function (e) {
-                    if (e.time == $scope.currentTime) {
-                        $scope.actualEvents.push(e);
-                    }
-                })
-                if ($scope.currentTime < 90) {
-                    matchIteration();
-                }
-                else {
-                    $scope.inProgress = false;
-                }
-            }, 500);
-        };
-
-        $scope.start = function () {
-            $scope.currentTime = 0;
-            $scope.inProgress = true;
-            matchIteration();
-        }
-
-        $scope.actualEvents = [];
-        $scope.events = [
-            {
-                isGoalScored: true,
-                isHostAction: true,
-                messageId: 'very.close',
-                time: 5
-            },
-            {
-                isGoalScored: false,
-                isHostAction: true,
-                messageId: 'awful.pass',
-                time: 17
-            },
-            {
-                isGoalScored: true,
-                isHostAction: false,
-                messageId: 'fantastic.finish',
-                time: 24
-            },
-            {
-                isGoalScored: false,
-                isHostAction: true,
-                messageId: 'bad.pass',
-                time: 33
-            },
-            {
-                isGoalScored: false,
-                isHostAction: false,
-                messageId: 'very.close',
-                time: 40
-            }
-        ];
-    })
-
-
-
 
     .controller("teamListCtrl", function ($scope, $timeout, teamService) {
         $scope.proceeding = false;
@@ -81,14 +15,10 @@ angular.module('football-manager', ["ngResource", 'pascalprecht.translate'])
             }
         );
         $scope.resolveTeamClass = function (team) {
-            var result = "";
-            if (team == $scope.hostTeam) {
-                result = 'host-row';
+            if (team == $scope.hostTeam || team == $scope.guestTeam) {
+                return 'active';
             }
-            else if (team == $scope.guestTeam) {
-                result = 'guest-row';
-            }
-            return result;
+            return "";
         }
 
         $scope.select = function (team) {
@@ -112,7 +42,61 @@ angular.module('football-manager', ["ngResource", 'pascalprecht.translate'])
         }
         $scope.proceed = function () {
             $scope.proceeding = true;
+            teamService.simulate({
+                hostId: $scope.hostTeam.id,
+                guestId: $scope.guestTeam.id
+            }).$promise.then(
+                function (result) {
+                    $scope.simulation = result;
+                    $scope.hostTeam = result.hostTeam;
+                    $scope.guestTeam = result.guestTeam;
+                    $scope.events = result.eventList;
+                }
+            )
+
         }
+        $scope.hostScored = 0;
+        $scope.guestScored = 0;
+        $scope.inProgress = false;
+        $scope.currentTime = 0;
+        $scope.hostPossession = 50;
+
+        function matchIteration() {
+            $timeout(function () {
+                $scope.currentTime++;
+                $scope.events.forEach(function (e) {
+                    if (e.time == $scope.currentTime) {
+                        $scope.hostPossession += e.hostPossession ? 1 : -1;
+                        console.table(e);
+                        if (e.scoringOpportunity) {
+                            $scope.actualEvents.push(e);
+                            if (e.goalScored) {
+                                if (e.hostPossession ) {
+                                    $scope.hostScored++;
+                                }
+                                else {
+                                    $scope.guestScored++;
+                                }
+                            }
+                        }
+                    }
+                })
+                if ($scope.currentTime < 90) {
+                    matchIteration();
+                }
+                else {
+                    $scope.inProgress = false;
+                }
+            }, 500);
+        };
+
+        $scope.start = function () {
+            $scope.currentTime = 0;
+            $scope.inProgress = true;
+            matchIteration();
+        }
+
+        $scope.actualEvents = [];
     })
 
 
@@ -137,6 +121,10 @@ angular.module('football-manager', ["ngResource", 'pascalprecht.translate'])
                 url: "team/list",
                 method: 'GET',
                 isArray: true
+            },
+            simulate: {
+                url: "team/:hostId/:guestId/simulate",
+                method: 'GET'
             }
         });
     })

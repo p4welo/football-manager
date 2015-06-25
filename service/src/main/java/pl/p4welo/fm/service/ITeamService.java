@@ -10,4 +10,5 @@ import java.util.List;
 public interface ITeamService {
 
     public List<Team> findAll();
+    public Team getById(int id);
 }

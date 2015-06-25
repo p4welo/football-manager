@@ -12,6 +12,12 @@ public class Simulation {
     private Team guestTeam;
     private List<Event> eventList;
 
+    public Simulation(Team hostTeam, Team guestTeam) {
+
+        this.hostTeam = hostTeam;
+        this.guestTeam = guestTeam;
+    }
+
     public Team getHostTeam() {
         return hostTeam;
     }

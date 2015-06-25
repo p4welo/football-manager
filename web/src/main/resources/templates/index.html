@@ -194,7 +194,9 @@
                         </thead>
                         <tbody>
                         <tr ng-repeat="t in teamList" ng-click="select(t)" ng-class="resolveTeamClass(t)">
-                            <td ng-bind="t.id"></td>
+                            <td>
+                                <span class="badge" ng-bind="t.id" ng-style="{'background-color': t.color}">3</span>
+                            </td>
                             <td ng-bind="t.name"></td>
                             <td ng-bind="t.power"></td>
                         </tr>
@@ -210,7 +212,7 @@
                     </div>
                 </div>
                 <div class="animated fadeInRightBig" ng-if="proceeding">
-                    <div class="container" ng-controller="matchCtrl">
+                    <div class="container">
                         <div class="row">
                             <div class="container">
                                 <div class="jumbotron col-sm-4 col-sm-offset-4 text-center">
@@ -219,35 +221,35 @@
                                         min
                                     </h2>
 
-                                    <h1>1:0</h1>
+                                    <h1>{{hostScored}}:{{guestScored}}</h1>
                                 </div>
                             </div>
 
                         </div>
                         <div class="row">
                             <div class="container">
-                                <h3 class="pull-left">FC Wymiatacze</h3>
+                                <h3 class="pull-left" ng-bind="hostTeam.name"></h3>
 
-                                <h3 class="pull-right">Odra Wodzisław</h3>
+                                <h3 class="pull-right" ng-bind="guestTeam.name"></h3>
                             </div>
                         </div>
                         <div class="row">
                             <div class="container">
                                 <div class="progress posession-bar">
-                                    <div class="progress-bar progress-bar-success"
-                                         ng-style="{width: hostPossession+'%'}"></div>
-                                    <div class="progress-bar progress-bar-warning"
-                                         ng-style="{width: 100-hostPossession+'%'}"></div>
+                                    <div class="progress-bar"
+                                         ng-style="{width: hostPossession+'%', 'background-color': hostTeam.color}"></div>
+                                    <div class="progress-bar"
+                                         ng-style="{width: 100-hostPossession+'%', 'background-color': guestTeam.color}"></div>
                                 </div>
                             </div>
                         </div>
-                        <button class="btn btn-material-green-700" ng-click="start()" ng-disabled="inProgress">
+                        <button class="btn btn-material-green-700" ng-click="start()" ng-if="simulation" ng-disabled="inProgress">
                             {{'static.begin' | translate}}
                         </button>
 
 
                         <div ng-repeat="e in actualEvents | orderBy: '-time'" class="panel panel-default"
-                             style="margin-bottom: 0; font-size: 18px" ng-class="{'goal' : e.isGoalScored}">
+                             style="margin-bottom: 0; font-size: 18px" ng-class="{'goal' : e.goalScored}">
                             <div class="panel-body">
                                 <small class="pull-left">
                                     <strong ng-bind="e.time"></strong>

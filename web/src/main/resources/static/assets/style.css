@@ -370,11 +370,12 @@ body, h1, h2, h3, h4, h5 {
     cursor: pointer;
 }
 
-.table-selectable tbody tr.guest-row td {
-    background-color: #F57C00;
+.table-selectable tbody tr.active td {
+    background-color: #7CB342;
     color: rgba(255, 255, 255, 0.84);
 }
-.table-selectable tbody tr.host-row td {
-    background-color: #388E3C;
+
+.table-selectable tbody tr.active:hover td {
+     background-color: #72ae3d;
     color: rgba(255, 255, 255, 0.84);
 }
