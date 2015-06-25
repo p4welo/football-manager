@@ -67,7 +67,8 @@ angular.module('football-manager', ["ngResource", 'pascalprecht.translate'])
                 $scope.currentTime++;
                 var e = _.findWhere($scope.events, {'time': $scope.currentTime});
                 var poss = e.hostPossession * 100 / (e.hostPossession + e.guestPossession);
-                $scope.hostPossession = Math.floor(poss);
+                //$scope.hostPossession = Math.floor(poss);
+                $scope.hostPossession = 50 + e.hostPossession - e.guestPossession;
 
                 if (e.type == 'GOAL') {
                     $scope.hostScored = e.hostScores;
@@ -91,7 +92,7 @@ angular.module('football-manager', ["ngResource", 'pascalprecht.translate'])
             $scope.currentTime = 0;
             $scope.inProgress = true;
             matchIteration();
-        }
+        };
         $scope.resolvePerformer = function (event) {
             if (_.includes(event.message, 'opportunity')) {
                 if (event.hostAction) {
@@ -99,6 +100,18 @@ angular.module('football-manager', ["ngResource", 'pascalprecht.translate'])
                 }
                 else {
                     return $scope.guestTeam.name;
+                }
+            }
+            return "";
+        };
+
+        $scope.resolveRowStyle = function (event) {
+            if (event.type == 'GOAL') {
+                if (event.hostAction) {
+                    return {'background-color' : $scope.hostTeam.color};
+                }
+                else {
+                    return {'background-color' : $scope.guestTeam.color};
                 }
             }
             return "";

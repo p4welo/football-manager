@@ -48,7 +48,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="/">
+                    <a class="navbar-brand" href="/fm">
                         <img alt="Brand" src="assets/logo.png"/>
                     </a>
                 </div>
@@ -169,16 +169,20 @@
                 <div ng-if="!proceeding">
                     <div class="row">
                         <div class="jumbotron col-sm-6 col-sm-offset-3">
-                            <h2>
-                                <strong>{{'static.host.team' | translate}}:</strong>
-                                <span ng-if="hostTeam" class="animated fadeInLeft pull-right">{{ hostTeam.name }}</span>
-                            </h2>
-
-                            <h2>
-                                <strong>{{'static.guest.team' | translate}}:</strong>
-                                <span ng-if="guestTeam"
-                                      class="animated fadeInLeft pull-right">{{ guestTeam.name }}</span>
-                            </h2>
+                            <div class="row">
+                                <h2 class="col-xs-12">
+                                    <strong>{{'static.host.team' | translate}}:</strong>
+                                    <span ng-if="hostTeam"
+                                          class="animated fadeInLeft pull-right">{{ hostTeam.name }}</span>
+                                </h2>
+                            </div>
+                            <div class="row">
+                                <h2 class="col-xs-12">
+                                    <strong>{{'static.guest.team' | translate}}:</strong>
+                                    <span ng-if="guestTeam"
+                                          class="animated fadeInLeft pull-right">{{ guestTeam.name }}</span>
+                                </h2>
+                            </div>
                         </div>
                     </div>
                     <h3>
@@ -249,8 +253,8 @@
                         </button>
 
 
-                        <div ng-repeat="e in actualEvents | orderBy: '-time'" class="panel panel-default panel-event"
-                             ng-class="{'goal' : e.type == 'GOAL'}">
+                        <div ng-repeat="e in actualEvents | orderBy: '-time'" class="panel panel-event"
+                             ng-class="{'goal' : e.type == 'GOAL'}" ng-style="resolveRowStyle(e)">
                             <div class="panel-body">
                                 <small class="pull-left">
                                     <strong ng-bind="e.time"></strong>
@@ -260,7 +264,7 @@
                                 </small>
 
                                 <div class="text-center">
-                                    <span ng-bind="resolvePerformer(e)"></span>
+                                    <strong ng-bind="resolvePerformer(e)"></strong>
                                     {{e.message | translate}}
                                 </div>
                             </div>

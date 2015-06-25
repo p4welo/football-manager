@@ -161,201 +161,75 @@ body, h1, h2, h3, h4, h5 {
 
 @-webkit-keyframes goal {
     0% {
-        background-color: #388e3c;
         color: white;
-    }
-    10% {
-        background-color: white;
-        color: inherit;
-    }
-    20% {
-        background-color: #388e3c;
-        color: white;
-    }
-    30% {
-        background-color: white;
-        color: inherit;
-    }
-    40% {
-        background-color: #388e3c;
-        color: white;
-    }
-    50% {
-        background-color: white;
-        color: inherit;
-    }
-    60% {
-        background-color: #388e3c;
-        color: white;
-    }
-    70% {
-        background-color: white;
-        color: inherit;
-    }
-    80% {
-        background-color: #388e3c;
-        color: white;
-    }
-    90% {
-        background-color: white;
-        color: inherit;
     }
     100% {
-        background-color: #388e3c;
-        color: white;
+        background-color: white;
     }
 }
 
 @-moz-keyframes goal {
     0% {
-        background-color: #388e3c;
         color: white;
-    }
-    10% {
-        background-color: white;
-        color: inherit;
-    }
-    20% {
-        background-color: #388e3c;
-        color: white;
-    }
-    30% {
-        background-color: white;
-        color: inherit;
-    }
-    40% {
-        background-color: #388e3c;
-        color: white;
-    }
-    50% {
-        background-color: white;
-        color: inherit;
-    }
-    60% {
-        background-color: #388e3c;
-        color: white;
-    }
-    70% {
-        background-color: white;
-        color: inherit;
-    }
-    80% {
-        background-color: #388e3c;
-        color: white;
-    }
-    90% {
-        background-color: white;
-        color: inherit;
     }
     100% {
-        background-color: #388e3c;
-        color: white;
+        background-color: white;
     }
 }
 
 @-ms-keyframes goal {
     0% {
-        background-color: #388e3c;
         color: white;
-    }
-    10% {
-        background-color: white;
-        color: inherit;
-    }
-    20% {
-        background-color: #388e3c;
-        color: white;
-    }
-    30% {
-        background-color: white;
-        color: inherit;
-    }
-    40% {
-        background-color: #388e3c;
-        color: white;
-    }
-    50% {
-        background-color: white;
-        color: inherit;
-    }
-    60% {
-        background-color: #388e3c;
-        color: white;
-    }
-    70% {
-        background-color: white;
-        color: inherit;
-    }
-    80% {
-        background-color: #388e3c;
-        color: white;
-    }
-    90% {
-        background-color: white;
-        color: inherit;
     }
     100% {
-        background-color: #388e3c;
-        color: white;
+        background-color: white;
     }
 }
 
 @keyframes goal {
     0% {
-        background-color: #388e3c;
         color: white;
-    }
-    10% {
-        background-color: white;
-        color: inherit;
-    }
-    20% {
-        background-color: #388e3c;
-        color: white;
-    }
-    30% {
-        background-color: white;
-        color: inherit;
-    }
-    40% {
-        background-color: #388e3c;
-        color: white;
-    }
-    50% {
-        background-color: white;
-        color: inherit;
-    }
-    60% {
-        background-color: #388e3c;
-        color: white;
-    }
-    70% {
-        background-color: white;
-        color: inherit;
-    }
-    80% {
-        background-color: #388e3c;
-        color: white;
-    }
-    90% {
-        background-color: white;
-        color: inherit;
     }
     100% {
-        background-color: #388e3c;
-        color: white;
+        background-color: white;
     }
+    /*20% {*/
+        /*color: white;*/
+    /*}*/
+    /*30% {*/
+        /*background-color: white;*/
+    /*}*/
+    /*40% {*/
+        /*color: white;*/
+    /*}*/
+    /*50% {*/
+        /*background-color: white;*/
+    /*}*/
+    /*60% {*/
+        /*color: white;*/
+    /*}*/
+    /*70% {*/
+        /*background-color: white;*/
+    /*}*/
+    /*80% {*/
+        /*color: white;*/
+    /*}*/
+    /*90% {*/
+        /*background-color: white;*/
+    /*}*/
+    /*100% {*/
+        /*color: white;*/
+    /*}*/
 }
 
 .goal {
-    background-color: #388e3c;
     color: white;
 
-    -ms-animation: goal 2s linear 2;
-    -moz-animation: goal 2s linear 2;
-    -webkit-animation: goal 2s linear 2;
-    -o-animation: goal 2s linear 2;
-    animation: goal 2s linear 2;
+    -ms-animation: goal 200ms linear 10;
+    -moz-animation: goal 200ms linear 10;
+    -webkit-animation: goal 200ms linear 10;
+    -o-animation: goal 200ms linear 10;
+    animation: goal 200ms linear 10;
 }
 
 .panel-event {
@@ -376,11 +250,11 @@ body, h1, h2, h3, h4, h5 {
 }
 
 .table-selectable tbody tr.active td {
-    background-color: #7CB342;
+    background-color: #388e3c;
     color: rgba(255, 255, 255, 0.84);
 }
 
 .table-selectable tbody tr.active:hover td {
-    background-color: #72ae3d;
+    background-color: #3e9d42;
     color: rgba(255, 255, 255, 0.84);
 }
