@@ -62,8 +62,7 @@ public class SimulationStrategy {
                     togglePossession();
                     continue;
                 }
-            }
-            else {
+            } else {
                 // test na opportunity
                 if (isOpportunity()) {
                     calculateHolder();
@@ -93,7 +92,7 @@ public class SimulationStrategy {
 
     private Goal createGoal(int minute) {
         Goal goal = new Goal(minute);
-        goal.setMessage("goal");
+        goal.setMessage(generateMessage("goal"));
         goal.setHostAction(hostAction);
         goal.setHostPossession(hostPossession);
         goal.setGuestPossession(guestPossession);
@@ -104,7 +103,7 @@ public class SimulationStrategy {
 
     private Action createLoss(int minute) {
         Action loss = new Action(minute);
-        loss.setMessage("loss");
+        loss.setMessage(generateMessage("loss"));
         loss.setHostAction(hostAction);
         loss.setHostPossession(hostPossession);
         loss.setGuestPossession(guestPossession);
@@ -113,11 +112,15 @@ public class SimulationStrategy {
 
     private Action createOpportunity(int minute) {
         Action opportunity = new Action(minute);
-        opportunity.setMessage("opportunity");
+        opportunity.setMessage(generateMessage("opportunity"));
         opportunity.setHostAction(hostAction);
         opportunity.setHostPossession(hostPossession);
         opportunity.setGuestPossession(guestPossession);
         return opportunity;
+    }
+
+    private String generateMessage(String key) {
+        return key + "." + RandomUtil.randomInt(0, 4);
     }
 
     private BallPossession createPossession(int minute) {
@@ -134,8 +137,7 @@ public class SimulationStrategy {
     private void recalculatePossession(boolean hostAction) {
         if (hostAction) {
             hostPossession++;
-        }
-        else {
+        } else {
             guestPossession++;
         }
     }
@@ -143,8 +145,7 @@ public class SimulationStrategy {
     private void recalculateScores(boolean hostAction) {
         if (hostAction) {
             hostScores++;
-        }
-        else {
+        } else {
             guestScores++;
         }
     }
@@ -154,8 +155,7 @@ public class SimulationStrategy {
         if (hostAction) {
             holder = host.getPower();
             taker = guest.getPower();
-        }
-        else {
+        } else {
             holder = guest.getPower();
             taker = host.getPower();
         }
@@ -168,8 +168,7 @@ public class SimulationStrategy {
         if (hostAction) {
             holder = host.getPower();
             taker = guest.getPower();
-        }
-        else {
+        } else {
             holder = guest.getPower();
             taker = host.getPower();
         }

@@ -92,6 +92,17 @@ angular.module('football-manager', ["ngResource", 'pascalprecht.translate'])
             $scope.inProgress = true;
             matchIteration();
         }
+        $scope.resolvePerformer = function (event) {
+            if (_.includes(event.message, 'opportunity')) {
+                if (event.hostAction) {
+                    return $scope.hostTeam.name;
+                }
+                else {
+                    return $scope.guestTeam.name;
+                }
+            }
+            return "";
+        }
 
         $scope.actualEvents = [];
     })

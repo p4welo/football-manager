@@ -243,17 +243,21 @@
                                 </div>
                             </div>
                         </div>
-                        <button class="btn btn-material-green-700" ng-click="start()" ng-if="simulation" ng-disabled="inProgress">
+                        <button class="btn btn-material-green-700" ng-click="start()" ng-if="simulation"
+                                ng-disabled="inProgress">
                             {{'static.begin' | translate}}
                         </button>
 
 
-                        <div ng-repeat="e in actualEvents | orderBy: '-time'" class="panel panel-default panel-event" ng-class="{'goal' : e.type == 'GOAL'}">
+                        <div ng-repeat="e in actualEvents | orderBy: '-time'" class="panel panel-default panel-event"
+                             ng-class="{'goal' : e.type == 'GOAL'}">
                             <div class="panel-body">
                                 <small class="pull-left">
                                     <strong ng-bind="e.time"></strong>
+                                    <img src="assets/ball.gif" alt="ball" style="height: 20px;" ng-if="e.type=='GOAL'"/>
                                 </small>
                                 <div class="text-center">
+                                    <span ng-bind="resolvePerformer(e)"></span>
                                     {{e.message | translate}}
                                 </div>
                             </div>
