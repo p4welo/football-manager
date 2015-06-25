@@ -17,9 +17,9 @@ public class TeamServiceImpl implements ITeamService {
     @Override
     public List<Team> findAll() {
         return Arrays.asList(
-                new Team(0, "FC Wymiatacze", 50d, "#F50057"),
-                new Team(1, "Odra Wodzislaw", 40d, "#651FFF"),
-                new Team(2, "Naprzod Rydultowy", 35d, "#FF9100")
+                new Team(0, "FC Wymiatacze", 50, "#F50057"),
+                new Team(1, "Odra Wodzislaw", 40, "#651FFF"),
+                new Team(2, "Naprzod Rydultowy", 35, "#FF9100")
         );
     }
 

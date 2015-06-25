@@ -8,13 +8,13 @@
     font-weight: 300;
     src: local('Roboto Light'), local('Roboto-Light'), url(http://fonts.gstatic.com/s/roboto/v15/Pru33qjShpZSmG3z6VYwnVtXRa8TVwTICgirnJhmVJw.woff2) format('woff2'), url(http://fonts.gstatic.com/s/roboto/v15/Pru33qjShpZSmG3z6VYwnT8E0i7KZn-EPnyo3HZu7kw.woff) format('woff');
 }
+
 @font-face {
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 400;
     src: local('Roboto'), local('Roboto-Regular'), url(http://fonts.gstatic.com/s/roboto/v15/fIKu7GwZTy_12XzG_jt8eA.woff2) format('woff2'), url(http://fonts.gstatic.com/s/roboto/v15/Xyjz-jNkfiYuJf8UC3Lizw.woff) format('woff');
 }
-
 
 body.loading, .loader {
     background-color: white;
@@ -358,6 +358,11 @@ body, h1, h2, h3, h4, h5 {
     animation: goal 2s linear 2;
 }
 
+.panel-event {
+    margin-bottom: 0;
+    font-size: 18px;
+}
+
 .navbar-brand > img {
     height: 35px;
 }
@@ -376,6 +381,6 @@ body, h1, h2, h3, h4, h5 {
 }
 
 .table-selectable tbody tr.active:hover td {
-     background-color: #72ae3d;
+    background-color: #72ae3d;
     color: rgba(255, 255, 255, 0.84);
 }

@@ -248,14 +248,13 @@
                         </button>
 
 
-                        <div ng-repeat="e in actualEvents | orderBy: '-time'" class="panel panel-default"
-                             style="margin-bottom: 0; font-size: 18px" ng-class="{'goal' : e.goalScored}">
+                        <div ng-repeat="e in actualEvents | orderBy: '-time'" class="panel panel-default panel-event" ng-class="{'goal' : e.type == 'GOAL'}">
                             <div class="panel-body">
                                 <small class="pull-left">
                                     <strong ng-bind="e.time"></strong>
                                 </small>
                                 <div class="text-center">
-                                    {{e.messageId | translate}}
+                                    {{e.message | translate}}
                                 </div>
                             </div>
                         </div>

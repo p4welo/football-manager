@@ -4,24 +4,22 @@ package pl.p4welo.fm.domain;
  * Created by parado on 2015-06-15.
  */
 public class Team {
+
+    private int id;
+    private String name;
+    private int power;
+    private String color;
+
     public Team(String name) {
         this.name = name;
     }
 
-    public Team(int id, String name, double power, String color) {
+    public Team(int id, String name, int power, String color) {
         this.id = id;
         this.name = name;
         this.power = power;
         this.color = color;
     }
-
-    private int id;
-
-    private String name;
-
-    private double power;
-
-    private String color;
 
     public String getName() {
         return name;
@@ -31,11 +29,11 @@ public class Team {
         this.name = name;
     }
 
-    public double getPower() {
+    public int getPower() {
         return power;
     }
 
-    public void setPower(double power) {
+    public void setPower(int power) {
         this.power = power;
     }
 
