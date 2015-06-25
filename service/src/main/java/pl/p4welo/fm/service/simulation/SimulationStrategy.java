@@ -120,7 +120,7 @@ public class SimulationStrategy {
     }
 
     private String generateMessage(String key) {
-        return key + "." + RandomUtil.randomInt(0, 4);
+        return key + "." + RandomUtil.randomInt(0, 6);
     }
 
     private BallPossession createPossession(int minute) {

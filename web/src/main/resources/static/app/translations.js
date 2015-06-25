@@ -16,23 +16,29 @@ angular.module('football-manager')
             'fantastic.finish' : "Fantastyczne wykończenie akcji!",
             'bad.pass' : "To było złe podanie...",
 
-            'opportunity.0': "może zaatakować...",
-            'opportunity.1': "próbuje sklecić z tego coś sensownego...",
-            'opportunity.2': "ma szansę na kontratak...",
-            'opportunity.3': "może zaatakować...",
-            'opportunity.4': "może zaatakować...",
+            'opportunity.0': "mogą zaatakować...",
+            'opportunity.1': "próbują sklecić z tego coś sensownego...",
+            'opportunity.2': "mają szansę na kontratak...",
+            'opportunity.3': "konstruują atak pozycyjny...",
+            'opportunity.4': "posyłają piłkę na skrzydło...",
+            'opportunity.5': "błyskawicznie rozgrywa piłkę...",
+            'opportunity.6': "próbują podań na jedno tempo...",
 
             'loss.0': "Uderzył daleko w trybuny.",
             'loss.1': "Ta akcja będzie śnić im się po nocach",
             'loss.2': "Tym razem przeciwnik okazał się skuteczniejszy.",
-            'loss.3': "Bramkarz popisał się popisową paradą.",
+            'loss.3': "Bramkarz popisał się świetną paradą.",
             'loss.4': "Strzał zablokowany przez obrońcę.",
+            'loss.5': "Uff! Było blisko!",
+            'loss.6': "Kiepskie podanie do napastnika!",
 
             'goal.0': "I PIŁKA W BRAMCE!",
             'goal.1': "FANTASTYCZNE WYKOŃCZENIE!",
             'goal.2': "PRAWDZIWY MAJSTERSZTYK!",
             'goal.3': "KAPITALNE UDERZENIE!",
-            'goal.4': "I MAMY GOLA!"
+            'goal.4': "GOOOOOOOOOOOL!",
+            'goal.5': "CO ZA AKCJA!",
+            'goal.6': "I MAMY GOLA!"
         });
         $translateProvider.translations('en', {
             'static.begin': "Begin",
@@ -48,23 +54,29 @@ angular.module('football-manager')
             'fantastic.finish' : "Fantastic finish!",
             'bad.pass' : "Bad pass...",
 
-            'opportunity.0': "może zaatakować...",
-            'opportunity.1': "próbuje sklecić z tego coś sensownego...",
-            'opportunity.2': "ma szansę na kontratak...",
-            'opportunity.3': "może zaatakować...",
-            'opportunity.4': "może zaatakować...",
+            'opportunity.0': "mogą zaatakować...",
+            'opportunity.1': "próbują sklecić z tego coś sensownego...",
+            'opportunity.2': "mają szansę na kontratak...",
+            'opportunity.3': "konstruują atak pozycyjny...",
+            'opportunity.4': "posyłają piłkę na skrzydło...",
+            'opportunity.5': "błyskawicznie rozgrywa piłkę...",
+            'opportunity.6': "próbują podań na jedno tempo...",
 
             'loss.0': "Uderzył daleko w trybuny.",
             'loss.1': "Ta akcja będzie śnić im się po nocach",
             'loss.2': "Tym razem przeciwnik okazał się skuteczniejszy.",
-            'loss.3': "Bramkarz popisał się popisową paradą.",
+            'loss.3': "Bramkarz popisał się świetną paradą.",
             'loss.4': "Strzał zablokowany przez obrońcę.",
+            'loss.5': "Uff! Było blisko!",
+            'loss.6': "Kiepskie podanie do napastnika!",
 
             'goal.0': "I PIŁKA W BRAMCE!",
             'goal.1': "FANTASTYCZNE WYKOŃCZENIE!",
             'goal.2': "PRAWDZIWY MAJSTERSZTYK!",
             'goal.3': "KAPITALNE UDERZENIE!",
-            'goal.4': "I MAMY GOLA!"
+            'goal.4': "GOOOOOOOOOOOL!",
+            'goal.5': "CO ZA AKCJA!",
+            'goal.6': "I MAMY GOLA!"
         });
 
         $translateProvider.preferredLanguage('pl');
