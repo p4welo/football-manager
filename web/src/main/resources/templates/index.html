@@ -254,8 +254,11 @@
                             <div class="panel-body">
                                 <small class="pull-left">
                                     <strong ng-bind="e.time"></strong>
-                                    <img src="assets/ball.gif" alt="ball" style="height: 20px;" ng-if="e.type=='GOAL'"/>
                                 </small>
+                                <small class="pull-right">
+                                    <img src="assets/ball.gif" alt="ball" style="height: 15px;" ng-if="e.type=='GOAL'"/>
+                                </small>
+
                                 <div class="text-center">
                                     <span ng-bind="resolvePerformer(e)"></span>
                                     {{e.message | translate}}
