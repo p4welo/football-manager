@@ -4,6 +4,7 @@ angular.module('football-manager')
 
         $translateProvider.translations('pl', {
             'static.begin': "Rozpocznij",
+            'static.rematch': "Rewanż!",
             'static.name': "Nazwa",
             'static.power': "Siła",
             'static.select.teams': "Wybierz drużyny",
@@ -44,6 +45,7 @@ angular.module('football-manager')
         });
         $translateProvider.translations('en', {
             'static.begin': "Begin",
+            'static.rematch': "Rematch",
             'static.name': "Name",
             'static.power': "Power",
             'static.select.teams': "Select teams",

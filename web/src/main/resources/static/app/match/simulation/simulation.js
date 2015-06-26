@@ -16,24 +16,29 @@ angular.module('football-manager')
             $state.go("teamSelect");
         }
 
-        teamHttpService.simulate({
-            hostId: $scope.hostTeam.id,
-            guestId: $scope.guestTeam.id
-        }).$promise.then(
-            function (result) {
-                $scope.simulation = result;
-                $scope.hostTeam = result.hostTeam;
-                $scope.guestTeam = result.guestTeam;
-                $scope.events = result.eventList;
-            }
-        );
+        function resetMatch() {
+            teamHttpService.simulate({
+                hostId: $scope.hostTeam.id,
+                guestId: $scope.guestTeam.id
+            }).$promise.then(
+                function (result) {
+                    $scope.simulation = result;
+                    $scope.hostTeam = result.hostTeam;
+                    $scope.guestTeam = result.guestTeam;
+                    $scope.events = result.eventList;
+                }
+            );
 
-        $scope.hostScored = 0;
-        $scope.guestScored = 0;
-        $scope.matchInProgress = false;
-        $scope.matchFinished = false;
-        $scope.currentTime = 0;
-        $scope.hostPossession = 50;
+            $scope.hostScored = 0;
+            $scope.guestScored = 0;
+            $scope.matchInProgress = false;
+            $scope.matchFinished = false;
+            $scope.currentTime = 0;
+            $scope.hostPossession = 50;
+            $scope.actualEvents = [];
+        }
+
+        resetMatch();
 
         function matchIteration() {
             $timeout(function () {
@@ -62,7 +67,11 @@ angular.module('football-manager')
 
         $scope.canStart = function () {
             return $scope.simulation && !$scope.matchFinished;
-        }
+        };
+
+        $scope.canReset = function () {
+            return $scope.matchFinished;
+        };
 
         $scope.start = function () {
             $scope.currentTime = 0;
@@ -86,6 +95,10 @@ angular.module('football-manager')
             return "";
         };
 
+        $scope.rematch = function () {
+            resetMatch();
+        }
+
         $scope.resolveMessageRowStyle = function (event) {
             if (event.type == 'GOAL') {
                 if (event.hostAction) {
@@ -105,6 +118,4 @@ angular.module('football-manager')
         $scope.resolveGuestPossessionStyle = function () {
             return {width: 100 - hostPossession + '%', 'background-color': guestTeam.color};
         }
-
-        $scope.actualEvents = [];
     });

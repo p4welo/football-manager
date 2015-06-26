@@ -33,6 +33,9 @@
             ng-disabled="matchInProgress">
         {{'static.begin' | translate}}
     </button>
+    <button class="btn btn-material-orange-700" ng-click="rematch()" ng-if="canReset()">
+        {{'static.rematch' | translate}}
+    </button>
 
     <div class="panel panel-event" ng-if="matchFinished">
         <div class="panel-body">
