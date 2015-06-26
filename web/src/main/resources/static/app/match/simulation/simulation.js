@@ -63,7 +63,7 @@ angular.module('football-manager')
                     $scope.matchInProgress = false;
                     $scope.matchFinished = true;
                 }
-            }, 1000 / $scope.speedLevel);
+            }, 1000 / ($scope.speedLevel * 1));
         };
 
         $scope.canStart = function () {
@@ -80,13 +80,25 @@ angular.module('football-manager')
             matchIteration();
         };
 
-        $scope.changeSpeed = function (speed) {
-            $scope.speedLevel = speed;
+        $scope.changeSpeed = function () {
+            $scope.speedLevel = $scope.speedLevel > 2 ? 1 : $scope.speedLevel + 1;
+        };
+
+        $scope.resolveGameSpeedClass = function () {
+            if ($scope.speedLevel == 1) {
+                return "btn-material-green-700";
+            }
+            else if ($scope.speedLevel == 2) {
+                return "btn-material-orange-700";
+            }
+            else {
+                return "btn-material-red-700";
+            }
         }
 
         $scope.isGoal = function (event) {
             return event.type == 'GOAL';
-        }
+        };
 
         $scope.resolvePerformer = function (event) {
             if (_.includes(event.message, 'opportunity')) {
