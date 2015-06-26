@@ -80,6 +80,11 @@
                 <artifactId>animate.css</artifactId>
                 <version>3.3.0</version>
             </dependency>
+            <dependency>
+                <groupId>org.webjars.bower</groupId>
+                <artifactId>angular-touch</artifactId>
+                <version>1.4.0</version>
+            </dependency>
 
             <dependency>
                 <groupId>org.springframework.boot</groupId>

@@ -1,4 +1,4 @@
-angular.module('football-manager', ["ngResource", 'pascalprecht.translate'])
+angular.module('football-manager', ["ngTouch", "ngResource", 'pascalprecht.translate'])
 
     .run(function ($rootScope, $translate) {
         $rootScope.setLanguage = function (lang) {

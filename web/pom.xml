@@ -30,6 +30,10 @@
         </dependency>
         <dependency>
             <groupId>org.webjars.bower</groupId>
+            <artifactId>angular-touch</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.webjars.bower</groupId>
             <artifactId>lodash</artifactId>
         </dependency>
         <dependency>
