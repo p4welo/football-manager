@@ -14,11 +14,6 @@ angular.module('football-manager')
             'static.match.begin': "No to zaczynajmy",
             'static.match.finished': "Dziękujemy za uwagę",
 
-            'very.close' : "Było blisko!",
-            'awful.pass' : "Kiepskie podanie do napastnika",
-            'fantastic.finish' : "Fantastyczne wykończenie akcji!",
-            'bad.pass' : "To było złe podanie...",
-
             'opportunity.0': "mogą zaatakować...",
             'opportunity.1': "próbują sklecić z tego coś sensownego...",
             'opportunity.2': "mają szansę na kontratak...",
@@ -54,11 +49,6 @@ angular.module('football-manager')
             'static.simulation': "Simulation",
             'static.match.begin': "So let's begin",
             'static.match.finished': "Thank you for watching",
-
-            'very.close' : "That was close!",
-            'awful.pass' : "Awful pass to the striker",
-            'fantastic.finish' : "Fantastic finish!",
-            'bad.pass' : "Bad pass...",
 
             'opportunity.0': "mogą zaatakować...",
             'opportunity.1': "próbują sklecić z tego coś sensownego...",

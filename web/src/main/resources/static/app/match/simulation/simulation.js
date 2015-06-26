@@ -36,6 +36,7 @@ angular.module('football-manager')
             $scope.currentTime = 0;
             $scope.hostPossession = 50;
             $scope.actualEvents = [];
+            $scope.speedLevel = 1;
         }
 
         resetMatch();
@@ -62,7 +63,7 @@ angular.module('football-manager')
                     $scope.matchInProgress = false;
                     $scope.matchFinished = true;
                 }
-            }, 500);
+            }, 1000 / $scope.speedLevel);
         };
 
         $scope.canStart = function () {
@@ -78,6 +79,10 @@ angular.module('football-manager')
             $scope.matchInProgress = true;
             matchIteration();
         };
+
+        $scope.changeSpeed = function (speed) {
+            $scope.speedLevel = speed;
+        }
 
         $scope.isGoal = function (event) {
             return event.type == 'GOAL';
@@ -112,10 +117,16 @@ angular.module('football-manager')
         };
 
         $scope.resolveHostPossessionStyle = function () {
-            return {width: hostPossession + '%', 'background-color': hostTeam.color};
+            return {
+                width: $scope.hostPossession + '%',
+                'background-color': $scope.hostTeam.color
+            };
         };
 
         $scope.resolveGuestPossessionStyle = function () {
-            return {width: 100 - hostPossession + '%', 'background-color': guestTeam.color};
+            return {
+                width: 100 - $scope.hostPossession + '%',
+                'background-color': $scope.guestTeam.color
+            };
         }
     });

@@ -1,13 +1,27 @@
 <div class="animated fadeInRightBig">
     <div class="row">
         <div class="container">
-            <div class="jumbotron col-sm-4 col-sm-offset-4 text-center">
+            <div class="jumbotron col-sm-4 col-sm-offset-4 text-center result-board">
                 <h2>
                     <span ng-bind="currentTime"></span>
                     min
                 </h2>
 
                 <h1>{{hostScored}}:{{guestScored}}</h1>
+                <div class="text-center">
+                    <button class="btn btn-flat  btn-material-green-700" ng-click="changeSpeed(1)" ng-disabled="speedLevel == 1">
+                        <i class="glyphicon glyphicon-menu-right"></i>
+                    </button>
+                    <button class="btn btn-flat btn-material-orange-700" ng-click="changeSpeed(3)" ng-disabled="speedLevel == 3">
+                        <i class="glyphicon glyphicon-menu-right"></i>
+                        <i class="glyphicon glyphicon-menu-right"></i>
+                    </button>
+                    <button class="btn btn-flat btn-material-red-700" ng-click="changeSpeed(5)" ng-disabled="speedLevel == 5">
+                        <i class="glyphicon glyphicon-menu-right"></i>
+                        <i class="glyphicon glyphicon-menu-right"></i>
+                        <i class="glyphicon glyphicon-menu-right"></i>
+                    </button>
+                </div>
             </div>
         </div>
 

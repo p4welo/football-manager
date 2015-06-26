@@ -262,3 +262,7 @@ body, h1, h2, h3, h4, h5 {
 .goal-ball {
     height: 15px;
 }
+
+.result-board {
+     padding-bottom: 0 !important;
+}
