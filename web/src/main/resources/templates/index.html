@@ -4,7 +4,7 @@
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <title>Bootstrap 101 Template</title>
+    <title>FootballManager</title>
 
     <link href="webjars/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet"/>
     <link href="webjars/bootstrap-material-design/0.3.0/css/material-fullpalette.min.css" rel="stylesheet"/>
@@ -48,7 +48,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="/fm">
+                    <a class="navbar-brand" href="javascript:void(0)">
                         <img alt="Brand" src="assets/logo.png"/>
                     </a>
                 </div>
@@ -65,227 +65,22 @@
     <div class="well hidden animated" id="contactWell">
         <form class="form-horizontal">
             <fieldset>
-                <legend>Legend
+                <legend>
                     <a href="javascript:void(0)" class="pull-right btn-link" onclick="toggleWell()">
                         <i class="mdi-content-clear"></i>
                     </a>
                 </legend>
-                <div class="form-group">
-                    <label for="inputEmail" class="col-lg-2 control-label">Email</label>
-
-                    <div class="col-lg-10">
-                        <input type="email" class="form-control" id="inputEmail" placeholder="Email"/>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="inputPassword" class="col-lg-2 control-label">Password</label>
-
-                    <div class="col-lg-10">
-                        <input type="password" class="form-control" id="inputPassword" placeholder="Password"/>
-
-                        <div class="checkbox">
-                            <label>
-                                <input type="checkbox"/> Checkbox
-                            </label>
-                        </div>
-                        <br/>
-
-                        <div class="togglebutton">
-                            <label>
-                                <input type="checkbox" checked=""/> Toggle button
-                            </label>
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="inputFile" class="col-lg-2 control-label">File</label>
-
-                    <div class="col-lg-10">
-                        <input type="text" readonly="" class="form-control floating-label" placeholder="Browse..."/>
-                        <input type="file" id="inputFile" multiple=""/>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="textArea" class="col-lg-2 control-label">Textarea</label>
-
-                    <div class="col-lg-10">
-                        <textarea class="form-control" rows="3" id="textArea"></textarea>
-                        <span class="help-block">A longer block of help text that breaks onto a new line and may extend beyond one line.</span>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-lg-2 control-label">Radios</label>
-
-                    <div class="col-lg-10">
-                        <div class="radio radio-primary">
-                            <label>
-                                <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1"
-                                       checked=""/>
-                                Option one is this
-                            </label>
-                        </div>
-                        <div class="radio radio-primary">
-                            <label>
-                                <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2"/>
-                                Option two can be something else
-                            </label>
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="select" class="col-lg-2 control-label">Selects</label>
-
-                    <div class="col-lg-10">
-                        <select class="form-control" id="select">
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
-                        </select>
-                        <br/>
-                        <select multiple="" class="form-control">
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="col-lg-10 col-lg-offset-2">
-                        <button class="btn btn-default">Cancel</button>
-                        <button type="submit" class="btn btn-primary">Submit</button>
-                    </div>
-                </div>
             </fieldset>
         </form>
     </div>
     <div class="container-fluid">
 
         <div class="row">
-            <div class="container" ng-controller="teamListCtrl">
-                <div ng-if="!proceeding">
-                    <div class="row">
-                        <div class="jumbotron col-sm-6 col-sm-offset-3">
-                            <div class="row">
-                                <h2 class="col-xs-12">
-                                    <strong>{{'static.host.team' | translate}}:</strong>
-                                    <span ng-if="hostTeam"
-                                          class="animated fadeInLeft pull-right">{{ hostTeam.name }}</span>
-                                </h2>
-                            </div>
-                            <div class="row">
-                                <h2 class="col-xs-12">
-                                    <strong>{{'static.guest.team' | translate}}:</strong>
-                                    <span ng-if="guestTeam"
-                                          class="animated fadeInLeft pull-right">{{ guestTeam.name }}</span>
-                                </h2>
-                            </div>
-                        </div>
-                    </div>
-                    <h3>
-                        {{'static.select.teams' | translate}}
-                    </h3>
-                    <table class="table table-hover table-selectable">
-                        <thead>
-                        <tr>
-                            <th>#</th>
-                            <th>{{'static.name' | translate}}</th>
-                            <th>{{'static.power' | translate}}</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr ng-repeat="t in teamList" ng-click="select(t)" ng-class="resolveTeamClass(t)">
-                            <td>
-                                <span class="badge" ng-bind="t.id" ng-style="{'background-color': t.color}">3</span>
-                            </td>
-                            <td ng-bind="t.name"></td>
-                            <td ng-bind="t.power"></td>
-                        </tr>
-                        </tbody>
-                    </table>
-                    <div class="row">
-                        <button class="btn btn-material-green-700 animated bounceIn pull-right"
-                                ng-click="proceed()"
-                                ng-if="teamsReady()">
-                            {{'static.begin' | translate}}!
-                            <i class="glyphicon glyphicon-chevron-right"></i>
-                        </button>
-                    </div>
-                </div>
-                <div class="animated fadeInRightBig" ng-if="proceeding">
-                    <div class="container">
-                        <div class="row">
-                            <div class="container">
-                                <div class="jumbotron col-sm-4 col-sm-offset-4 text-center">
-                                    <h2>
-                                        <span ng-bind="currentTime"></span>
-                                        min
-                                    </h2>
-
-                                    <h1>{{hostScored}}:{{guestScored}}</h1>
-                                </div>
-                            </div>
-
-                        </div>
-                        <div class="row">
-                            <div class="container">
-                                <h3 class="pull-left" ng-bind="hostTeam.name"></h3>
-
-                                <h3 class="pull-right" ng-bind="guestTeam.name"></h3>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="container">
-                                <div class="progress posession-bar">
-                                    <div class="progress-bar"
-                                         ng-style="{width: hostPossession+'%', 'background-color': hostTeam.color}"></div>
-                                    <div class="progress-bar"
-                                         ng-style="{width: 100-hostPossession+'%', 'background-color': guestTeam.color}"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <button class="btn btn-material-green-700" ng-click="start()" ng-if="simulation"
-                                ng-disabled="inProgress">
-                            {{'static.begin' | translate}}
-                        </button>
-
-
-                        <div ng-repeat="e in actualEvents | orderBy: '-time'" class="panel panel-event"
-                             ng-class="{'goal' : e.type == 'GOAL'}" ng-style="resolveRowStyle(e)">
-                            <div class="panel-body">
-                                <small class="pull-left">
-                                    <strong ng-bind="e.time"></strong>
-                                </small>
-                                <small class="pull-right">
-                                    <img src="assets/ball.gif" alt="ball" style="height: 15px;" ng-if="e.type=='GOAL'"/>
-                                </small>
-
-                                <div class="text-center">
-                                    <strong ng-bind="resolvePerformer(e)"></strong>
-                                    {{e.message | translate}}
-                                </div>
-                            </div>
-                        </div>
-                        <div class="panel panel-event" ng-if="inProgress">
-                            <div class="panel-body">
-                                <div class="text-center">
-                                    {{'static.match.begin' | translate}}
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <div class="container" ui-view=""></div>
         </div>
     </div>
 </div>
-
 <script src="assets/loader.js" type="text/javascript"></script>
 <script src="assets/main.js" type="text/javascript"></script>
-<script src="app/app.js" type="text/javascript"></script>
-<script src="app/translations.js" type="text/javascript"></script>
 </body>
 </html>

@@ -1,0 +1,47 @@
+<div class="row">
+    <div class="jumbotron col-sm-6 col-sm-offset-3">
+        <div class="row">
+            <h2 class="col-xs-12">
+                <strong>{{'static.host.team' | translate}}:</strong>
+                                    <span ng-if="hostTeam"
+                                          class="animated fadeInLeft pull-right">{{ hostTeam.name }}</span>
+            </h2>
+        </div>
+        <div class="row">
+            <h2 class="col-xs-12">
+                <strong>{{'static.guest.team' | translate}}:</strong>
+                                    <span ng-if="guestTeam"
+                                          class="animated fadeInLeft pull-right">{{ guestTeam.name }}</span>
+            </h2>
+        </div>
+    </div>
+</div>
+<h3>
+    {{'static.select.teams' | translate}}
+</h3>
+<table class="table table-hover table-selectable">
+    <thead>
+    <tr>
+        <th>#</th>
+        <th>{{'static.name' | translate}}</th>
+        <th>{{'static.power' | translate}}</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="t in teamList" ng-click="select(t)" ng-class="resolveTeamClass(t)">
+        <td>
+            <span class="badge" ng-bind="t.id" ng-style="{'background-color': t.color}">3</span>
+        </td>
+        <td ng-bind="t.name"></td>
+        <td ng-bind="t.power"></td>
+    </tr>
+    </tbody>
+</table>
+<div class="row">
+    <button class="btn btn-material-green-700 animated bounceIn pull-right"
+            ng-click="proceed()"
+            ng-if="teamsReady()">
+        {{'static.begin' | translate}}!
+        <i class="glyphicon glyphicon-chevron-right"></i>
+    </button>
+</div>

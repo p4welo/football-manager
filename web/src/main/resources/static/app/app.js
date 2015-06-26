@@ -1,4 +1,4 @@
-angular.module('football-manager', ["ngTouch", "ngResource", 'pascalprecht.translate'])
+angular.module('football-manager', ["ngTouch", "ngResource", "ui.router", "pascalprecht.translate"])
 
     .run(function ($rootScope, $translate) {
         $rootScope.setLanguage = function (lang) {
@@ -6,10 +6,13 @@ angular.module('football-manager', ["ngTouch", "ngResource", 'pascalprecht.trans
         }
     })
 
+    .config(function ($stateProvider, $urlRouterProvider) {
+        $urlRouterProvider.otherwise('/teamSelect');
+    })
 
-    .controller("teamListCtrl", function ($scope, $timeout, teamService) {
+    .controller("teamListCtrl", function ($scope, $timeout, teamHttpService) {
         $scope.proceeding = false;
-        teamService.list().$promise.then(
+        teamHttpService.list().$promise.then(
             function (result) {
                 $scope.teamList = result;
             }
@@ -19,7 +22,7 @@ angular.module('football-manager', ["ngTouch", "ngResource", 'pascalprecht.trans
                 return 'active';
             }
             return "";
-        }
+        };
 
         $scope.select = function (team) {
             if ($scope.hostTeam == team) {
@@ -36,13 +39,13 @@ angular.module('football-manager', ["ngTouch", "ngResource", 'pascalprecht.trans
             else if ($scope.guestTeam == null) {
                 $scope.guestTeam = team;
             }
-        }
+        };
         $scope.teamsReady = function () {
             return $scope.hostTeam != null && $scope.guestTeam != null;
-        }
+        };
         $scope.proceed = function () {
             $scope.proceeding = true;
-            teamService.simulate({
+            teamHttpService.simulate({
                 hostId: $scope.hostTeam.id,
                 guestId: $scope.guestTeam.id
             }).$promise.then(
@@ -53,8 +56,7 @@ angular.module('football-manager', ["ngTouch", "ngResource", 'pascalprecht.trans
                     $scope.events = result.eventList;
                 }
             )
-
-        }
+        };
         $scope.hostScored = 0;
         $scope.guestScored = 0;
         $scope.inProgress = false;
@@ -66,8 +68,6 @@ angular.module('football-manager', ["ngTouch", "ngResource", 'pascalprecht.trans
             $timeout(function () {
                 $scope.currentTime++;
                 var e = _.findWhere($scope.events, {'time': $scope.currentTime});
-                var poss = e.hostPossession * 100 / (e.hostPossession + e.guestPossession);
-                //$scope.hostPossession = Math.floor(poss);
                 $scope.hostPossession = 50 + e.hostPossession - e.guestPossession;
 
                 if (e.type == 'GOAL') {
@@ -118,20 +118,4 @@ angular.module('football-manager', ["ngTouch", "ngResource", 'pascalprecht.trans
         }
 
         $scope.actualEvents = [];
-    })
-
-
-    .factory('teamService', function ($resource) {
-        return $resource(null, null, {
-            list: {
-                url: "team/list",
-                method: 'GET',
-                isArray: true
-            },
-            simulate: {
-                url: "team/:hostId/:guestId/simulate",
-                method: 'GET'
-            }
-        });
-    })
-;
+    });

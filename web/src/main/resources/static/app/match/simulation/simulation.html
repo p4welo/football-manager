@@ -1,0 +1,70 @@
+<div class="animated fadeInRightBig">
+    <div class="row">
+        <div class="container">
+            <div class="jumbotron col-sm-4 col-sm-offset-4 text-center">
+                <h2>
+                    <span ng-bind="currentTime"></span>
+                    min
+                </h2>
+
+                <h1>{{hostScored}}:{{guestScored}}</h1>
+            </div>
+        </div>
+
+    </div>
+    <div class="row">
+        <div class="container">
+            <h3 class="pull-left" ng-bind="hostTeam.name"></h3>
+
+            <h3 class="pull-right" ng-bind="guestTeam.name"></h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="container">
+            <div class="progress posession-bar">
+                <div class="progress-bar"
+                     ng-style="resolveHostPossessionStyle()"></div>
+                <div class="progress-bar"
+                     ng-style="resolveGuestPossessionStyle()"></div>
+            </div>
+        </div>
+    </div>
+    <button class="btn btn-material-green-700" ng-click="start()" ng-if="canStart()"
+            ng-disabled="matchInProgress">
+        {{'static.begin' | translate}}
+    </button>
+
+    <div class="panel panel-event" ng-if="matchFinished">
+        <div class="panel-body">
+            <small class="pull-left">
+                <strong>90</strong>
+            </small>
+            <div class="text-center">
+                {{'static.match.finished' | translate}}
+            </div>
+        </div>
+    </div>
+    <div ng-repeat="e in actualEvents | orderBy: '-time'" class="panel panel-event"
+         ng-class="{'goal' : isGoal(e)}" ng-style="resolveMessageRowStyle(e)">
+        <div class="panel-body">
+            <small class="pull-left">
+                <strong ng-bind="e.time"></strong>
+            </small>
+            <small class="pull-right" ng-if="isGoal(e)">
+                <img src="assets/ball.gif" alt="ball" class="goal-ball"/>
+            </small>
+
+            <div class="text-center">
+                <strong ng-bind="resolvePerformer(e)"></strong>
+                {{e.message | translate}}
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-event" ng-if="matchInProgress">
+        <div class="panel-body">
+            <div class="text-center">
+                {{'static.match.begin' | translate}}
+            </div>
+        </div>
+    </div>
+</div>

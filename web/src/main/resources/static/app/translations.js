@@ -11,6 +11,7 @@ angular.module('football-manager')
             'static.host.team': "Gospodarze",
             'static.simulation': "Symulacja",
             'static.match.begin': "No to zaczynajmy",
+            'static.match.finished': "Dziękujemy za uwagę",
 
             'very.close' : "Było blisko!",
             'awful.pass' : "Kiepskie podanie do napastnika",
@@ -50,6 +51,7 @@ angular.module('football-manager')
             'static.host.team': "Host",
             'static.simulation': "Simulation",
             'static.match.begin': "So let's begin",
+            'static.match.finished': "Thank you for watching",
 
             'very.close' : "That was close!",
             'awful.pass' : "Awful pass to the striker",
